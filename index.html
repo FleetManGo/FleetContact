@@ -34,10 +34,10 @@
             margin-top: 25px;
             color: rgb(247, 22, 22);
             text-shadow: 
-        -1px -1px 0 white,  
-         1px -1px 0 white,
-        -1px  1px 0 white,
-         1px  1px 0 white; /* Creates a white outline effect */
+        -1px -1px 0 rgb(4, 4, 4),  
+         1px -1px 0 rgb(10, 10, 10),
+        -1px  1px 0 rgb(10, 10, 10),
+         1px  1px 0 rgb(5, 5, 5); /* Creates a white outline effect */
         }
 
         table {
@@ -68,32 +68,99 @@
         }
 
         .button-container {
+            background-color: #010101;
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 300px;
             text-align: center;
-            margin-top: 20px;
+            display: none; /* Hide the buttons initially */
         }
 
         .button-container button {
-            padding: 10px 20px;
+            padding: 15px 20px;
             font-size: 16px;
-            margin: 10px;
             cursor: pointer;
-            background-color: #0962a1;
-            color: white;
-            border: none;
             border-radius: 5px;
+            transition: all 0.3s ease;
+            border: none;
         }
 
+        /* Default button colors */
         .button-container button:hover {
-            background-color: #45a049;
+            background-color: #007BFF;
+            color: rgb(244, 244, 248);
         }
+
+        .button-container button:active {
+            transform: scale(0.98);
+        }
+
+        .blue-button {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .green-button {
+            background-color: #f3c615;
+            color: white;
+        }
+
+        .orange-button {
+            background-color: #FFA500;
+            color: white;
+        }
+
+        .red-button {
+            background-color: #DC3545;
+            color: white;
+        }
+
+        .button-container button:focus {
+            outline: none;
+        }
+
+        /* Menu button styles */
+        .menu-button {
+            padding: 15px 20px;
+            background-color: #3319f6;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-button:hover {
+            background-color: #01010e;
+        }
+
+    </style>
     </style>
 </head>
 <body>
 
     <!-- Fleet Maintenance Contact Info -->
     <h1>Fleet Maintenance Contact Info</h1>
-
+ <!-- Menu Button -->
+ <button class="menu-button" onclick="toggleMenu()">Menu</button>
     <!-- Fleet Maintenance Table -->
+       <!-- Button Container -->
+    <div class="button-container" id="button-container">
+        <button class="blue-button" onclick="loadContent('breakdown-procedures')">Breakdown</button>
+        <button class="green-button" onclick="loadContent('setting-triangle')">Setting Triangle</button>
+        <button class="orange-button" onclick="loadContent('pti-step-by-step')">PTI Step-by-Step</button>
+        <button class="red-button" onclick="loadContent('safety-info-tips')">Safety Info</button>
+        <!-- New buttons with different colors -->
+        <button class="blue-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/amio0gvi6p/index'">Tractor Inspection</button>
+        <button class="green-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/eqdub1sdoq/index'">Trailer Inspection</button>
+    </div>
     <table>
         <tr>
             <th>Name</th>
@@ -159,7 +226,7 @@
     <td><a href="mailto:info@spacexcarries.com">info@spacexcarries.com</a></td>
         </tr>
         <tr>
-            <td>Aiturgan Safety</td>
+            <td>Ain Safety</td>
             <td>8 AM - 5 PM</td>
             <td><a href="tel:+17737583896">(773) 758-3896</td>
                              <td><a href="https://t.me/SAFETY_SpaceX" target="_blank">@SAFETY_SpaceX</a></td>
@@ -238,14 +305,21 @@
          
      </table>
 
-    <!-- Buttons for different pages -->
-    <div class="button-container">
-        <button onclick="loadContent('breakdown-procedures')">Breakdown Procedures</button>
-        <button onclick="loadContent('setting-triangle')">Setting Triangle</button>
-        <button onclick="loadContent('pti-step-by-step')">PTI Step-by-Step</button>
-        <button onclick="loadContent('safety-info-tips')">Safety Info & Tips</button>
-    </div>
+   
+
+  
     <script>
+   // Toggle the visibility of the button container
+   function toggleMenu() {
+            const buttonContainer = document.getElementById('button-container');
+            if (buttonContainer.style.display === 'none' || buttonContainer.style.display === '') {
+                buttonContainer.style.display = 'grid';  // Show the buttons
+            } else {
+                buttonContainer.style.display = 'none';  // Hide the buttons
+            }
+        }
+
+        // Function to load content
         function loadContent(page) {
             if (page === 'breakdown-procedures') {
                 window.location.href = 'breakdownProcedures.html';
