@@ -32,12 +32,12 @@
         h1 {
             text-align: center;
             margin-top: 25px;
-            color: rgb(247, 22, 22);
+            color: rgb(187, 13, 22);
             text-shadow: 
-        -1px -1px 0 rgb(4, 4, 4),  
-         1px -1px 0 rgb(10, 10, 10),
-        -1px  1px 0 rgb(10, 10, 10),
-         1px  1px 0 rgb(5, 5, 5); /* Creates a white outline effect */
+        -1px -1px 0 rgb(251, 249, 249),  
+         1px -1px 0 rgb(250, 249, 249),
+        -1px  1px 0 rgb(250, 248, 248),
+         1px  1px 0 rgb(255, 253, 253); /* Creates a white outline effect */
         }
 
         table {
@@ -56,7 +56,7 @@
         }
 
         th {
-            background-color: black;
+            background-color: rgb(7, 50, 194);
             color: white;
         }
 
@@ -66,20 +66,30 @@
                 font-size: 14px;
             }
         }
+ /* Initially hide the button container */
+ #button-container {
+        display: none;
+        opacity: 0;
+        transform: translateY(-20px); /* Start position slightly above */
+        transition: opacity 1s ease, transform 1s ease;
+    }
+    .button-container {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Softer border */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 300px;
+    text-align: center;
+    display: none; /* Hide the buttons initially */
 
-        .button-container {
-            background-color: #010101;
-            border: 2px solid #ccc;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            width: 300px;
-            text-align: center;
-            display: none; /* Hide the buttons initially */
-        }
+    /* Blur effect */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+}
 
         .button-container button {
             padding: 15px 20px;
@@ -126,31 +136,52 @@
 
         /* Menu button styles */
         .menu-button {
-            padding: 15px 20px;
-            background-color: #3319f6;
-            color: white;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #3319f6, #1a0dab); /* Gradient for depth */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Space for an icon */
+}
 
-        .menu-button:hover {
-            background-color: #01010e;
-        }
+/* Hover effect */
+.menu-button:hover {
+    background: linear-gradient(135deg, #01010e, #202040);
+    transform: scale(1.05); /* Slight scale effect */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Active (clicked) effect */
+.menu-button:active {
+    transform: scale(0.98);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Add an icon using FontAwesome */
+.menu-button::before {
+    content: '\f0c9'; /* Unicode for FontAwesome "bars" icon */
+    font-family: FontAwesome;
+    font-size: 18px;
+}
 
     </style>
     </style>
 </head>
 <body>
-
-    <!-- Fleet Maintenance Contact Info -->
-    <h1>Fleet Maintenance Contact Info</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
  <!-- Menu Button -->
  <button class="menu-button" onclick="toggleMenu()">Menu</button>
-    <!-- Fleet Maintenance Table -->
+    
        <!-- Button Container -->
     <div class="button-container" id="button-container">
         <button class="blue-button" onclick="loadContent('breakdown-procedures')">Breakdown</button>
@@ -161,6 +192,9 @@
         <button class="blue-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/amio0gvi6p/index'">Tractor Inspection</button>
         <button class="green-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/eqdub1sdoq/index'">Trailer Inspection</button>
     </div>
+    <!-- Fleet Maintenance Contact Info -->
+    <h1>Fleet Maintenance Contact Info</h1>
+    <!-- Fleet Maintenance Table -->
     <table>
         <tr>
             <th>Name</th>
@@ -304,21 +338,47 @@
          </tr>
          
      </table>
+     <footer style="text-align: center; padding: 15px; background-color: #f8f8f8; border-top: 2px solid #ddd;">
+        <p>
+            <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
+            <br>
+            <span style="font-size: 16px;">All rights reserved.</span>
+        </p>
+        <p style="font-size: 14px;">
+            📜 This website and its contents are protected under applicable copyright laws.  
+            Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
+        </p>
+        <p>
+            📩 Contact us at <a href="mailto:fleet@spacexcarriers.com" style="color: #007bff; text-decoration: none;">fleet@spacexcarriers.com</a>
+        </p>
+    </footer>
 
-   
+    <script>
+        // Automatically update the year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 
   
-    <script>
-   // Toggle the visibility of the button container
-   function toggleMenu() {
+     <script>
+        // Toggle the visibility of the button container with smooth animation
+        function toggleMenu() {
             const buttonContainer = document.getElementById('button-container');
+    
             if (buttonContainer.style.display === 'none' || buttonContainer.style.display === '') {
-                buttonContainer.style.display = 'grid';  // Show the buttons
+                buttonContainer.style.display = 'grid'; // Make it visible
+                setTimeout(() => { 
+                    buttonContainer.style.opacity = '1';
+                    buttonContainer.style.transform = 'translateY(0)';
+                }, 10); // Small delay for smooth animation
             } else {
-                buttonContainer.style.display = 'none';  // Hide the buttons
+                buttonContainer.style.opacity = '0';
+                buttonContainer.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    buttonContainer.style.display = 'none';
+                }, 500); // Hide after animation ends
             }
         }
-
+    
         // Function to load content
         function loadContent(page) {
             if (page === 'breakdown-procedures') {
@@ -332,6 +392,7 @@
             }
         }
     </script>
-
+    
+   
 </body>
 </html>
