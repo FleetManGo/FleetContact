@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFTA Sticker Information</title>
+    <style>
+        .IFTA {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('IFTA-safety.webp');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .content {
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* Adds a dark background to make text readable */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        .button-container button {
+            padding: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .button-container button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .images-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding: 20px;
+        }
+        .images-container img {
+            width: 45%; /* Adjust the width of each image */
+            border-radius: 10px;
+        }
+        .footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-top: 2px solid #ddd;
+        color: black; /* Ensures black text */
+    }
+    
+    .footer a {
+        color: #007bff;
+        text-decoration: none;
+    }.home-button {
+    display: block;
+    width: 200px;
+    padding: 15px;
+    text-align: center;
+    background-color: #004a7c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+    
+    /* Fix the button at the bottom left */
+    position: fixed;
+    bottom: 20px;  /* Distance from the bottom */
+    right: 20px;    /* Distance from the left */
+    z-index: 1000;  /* Keeps it above other elements */
+}
+ /* Video container styling */
+ .video-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    iframe {
+        border-radius: 10px; /* Rounded corners for a modern look */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    }
+
+    </style>
+</head>
+<body class="IFTA">
+
+    <h1 style="text-align: center;">IFTA Sticker Information</h1>
+    
+    <div class="button-container" style="text-align: center;">
+        <button onclick="switchLanguage('en')">English</button>
+        <button onclick="switchLanguage('ru')">Русский</button>
+        <button onclick="switchLanguage('ky')">Кыргызча</button>
+    </div>
+    
+    <div id="content" class="content">
+        <!-- Default content in English -->
+        <h2>Where the IFTA Sticker Goes on a Semi-Truck</h2>
+        <p>The IFTA decals or stickers should be placed on both the driver’s side and passenger’s side of the truck’s <strong>lower part of the door</strong> or <strong>window frame</strong>, usually in the area close to the door or at the rear of the cab. The stickers should be clearly visible and not obstructed to ensure compliance during inspections.</p>
+        
+        <h2>Penalties for Missing IFTA Sticker</h2>
+        <p>If a semi-truck does not have the IFTA sticker or it is missing, the penalties can include:</p>
+        <ul>
+            <li><strong>Fines:</strong> Fines for not having the decal can vary depending on the state or province, but they can range from a flat fine to daily fines until the vehicle complies.</li>
+            <li><strong>Inability to operate:</strong> In some jurisdictions, a truck can be temporarily prohibited from operating across state or provincial lines until the proper stickers are affixed.</li>
+            <li><strong>Back Taxes:</strong> The truck operator may have to pay taxes retroactively for the time the vehicle was operating without the necessary decals, along with penalties and interest for non-compliance.</li>
+        </ul>
+    </div>
+
+    <div class="images-container">
+        <img src="PassSide.png" alt="Passenger Side Sticker">
+        <img src="DrSide.png" alt="Driver Side Sticker">
+    </div>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/TafJf3dNGo0" 
+            title="YouTube video player" frameborder="0" allowfullscreen>
+        </iframe>
+    </div>
+    <a href="safety.html" class="home-button">Back To Safety</a>ß
+    <footer class="footer">
+        <p>
+            <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
+            <br>
+            <span style="font-size: 16px;">All rights reserved.</span>
+        </p>
+        <p style="font-size: 14px;">
+            📜 This website and its contents are protected under applicable copyright laws.  
+            Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
+        </p>
+        <p>
+            📩 Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
+        </p>
+    </footer>
+   
+    <script>
+        const content = {
+            en: {
+                heading: "Where the IFTA Sticker Goes on a Semi-Truck",
+                paragraph: "The IFTA decals or stickers should be placed on both the driver’s side and passenger’s side of the truck’s <strong>lower part of the door</strong> or <strong>window frame</strong>, usually in the area close to the door or at the rear of the cab. The stickers should be clearly visible and not obstructed to ensure compliance during inspections.",
+                penaltiesHeading: "Penalties for Missing IFTA Sticker",
+                penaltiesList: [
+                    "Fines: Fines for not having the decal can vary depending on the state or province, but they can range from a flat fine to daily fines until the vehicle complies.",
+                    "Inability to operate: In some jurisdictions, a truck can be temporarily prohibited from operating across state or provincial lines until the proper stickers are affixed.",
+                    "Back Taxes: The truck operator may have to pay taxes retroactively for the time the vehicle was operating without the necessary decals, along with penalties and interest for non-compliance."
+                ]
+            },
+            ru: {
+                heading: "Где размещается наклейка IFTA на полуприцепе",
+                paragraph: "Наклейки IFTA должны быть размещены с обеих сторон, как с водительской, так и с пассажирской стороны <strong>внизу на двери</strong> или <strong>на оконной раме</strong>, обычно вблизи двери или сзади кабины. Наклейки должны быть четко видны и не закрыты, чтобы соответствовать требованиям инспекции.",
+                penaltiesHeading: "Штрафы за отсутствие наклейки IFTA или её потерю",
+                penaltiesList: [
+                    "Штрафы: Штрафы за отсутствие наклейки могут варьироваться в зависимости от штата или провинции, но обычно они могут быть как фиксированными, так и ежедневными до тех пор, пока транспортное средство не приведет себя в соответствие.",
+                    "Запрещение эксплуатации: В некоторых юрисдикциях полуприцеп может временно не иметь права на поездки по межштатным или межпровинциальным маршрутам до тех пор, пока не будут размещены соответствующие наклейки.",
+                    "Налоги за прошлые периоды: Оператору транспортного средства может быть необходимо заплатить налоги ретроактивно за время эксплуатации без нужных наклеек, а также штрафы и проценты за несоответствие."
+                ]
+            },
+            ky: {
+                heading: "IFTA наклейка кайда коюлат?",
+                paragraph: "IFTA белгилери жүк ташуучу унаанын <strong>оюнунун төмөнкү бөлүгүнө</strong> же <strong>терезе рамкасына</strong>, көбүнчө эшикке жакын жерге же кабинанын артына орнотулат. Наклейкалар ачык көрүнүп, текшерүүлөрдө тоскоол болбошу керек.",
+                penaltiesHeading: "IFTA наклейкасы жок болсо же жоголсо кандай жазалар бар?",
+                penaltiesList: [
+                    "Айыппулдар: Наклейка жок болсо, айыппулдар штатка же провинцияга жараша ар кандай болушу мүмкүн, бирок алар көбүнчө туруктуу айыппулдан баштап күнүмдүк айыппулдарга чейин болушу мүмкүн.",
+                    "Эксплуатацияга тыюу салуу: Кээ бир юрисдикцияларда, наклейкалар орнотулбайынша унаага интерштаттык же провинция аралык сапарларды жүргүзүүгө тыюу салынат.",
+                    "Өткөн салыкты төлөө: Транспорттук каражаттын ээси, наклейкалар жок кезде эксплуатацияланган убакытка байланыштуу салыкты артка кайтаруу менен, ошондой эле айыппулдар жана пайыздар менен төлөөгө милдеттүү болушу мүмкүн."
+                ]
+            }
+        };
+
+        function switchLanguage(language) {
+            const langContent = content[language];
+            document.getElementById('content').innerHTML = `
+                <h2>${langContent.heading}</h2>
+                <p>${langContent.paragraph}</p>
+                <h2>${langContent.penaltiesHeading}</h2>
+                <ul>
+                    ${langContent.penaltiesList.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+            `;
+        }
+    </script>
+</body>
+</html>
