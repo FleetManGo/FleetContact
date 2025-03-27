@@ -74,8 +74,8 @@
         /* Home Button */
         .home-button {
             display: block;
-            width: 200px;
-            padding: 15px;
+            width: 80px;
+            padding: 8px;
             text-align: center;
             background-color: #004a7c;
             color: #fff;
@@ -129,6 +129,7 @@
     <a href="index.html" class="home-button">Home</a>
 
     <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <p>
             <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
@@ -143,10 +144,22 @@
             📩 Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
         </p>
     </footer>
+
     <script>
         // Automatically update the year
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Show footer when scrolling down
+        window.onscroll = function() {
+            var footer = document.querySelector('.footer');
+            if (window.scrollY > 100) {
+                footer.classList.add('show');
+            } else {
+                footer.classList.remove('show');
+            }
+        };
     </script>
+
 
 </body>
 </html>

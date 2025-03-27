@@ -61,13 +61,13 @@
         text-decoration: none;
     }.home-button {
     display: block;
-    width: 200px;
-    padding: 15px;
+    width: 150px;
+    padding: 10px;
     text-align: center;
     background-color: #004a7c;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 1.2em;
     transition: background-color 0.3s ease;
     
@@ -136,20 +136,37 @@
         </iframe>
     </div>
     <a href="safety.html" class="home-button">Back To Safety</a>ß
-    <footer class="footer">
-        <p>
-            <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
-            <br>
-            <span style="font-size: 16px;">All rights reserved.</span>
-        </p>
-        <p style="font-size: 14px;">
-            📜 This website and its contents are protected under applicable copyright laws.  
-            Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
-        </p>
-        <p>
-            📩 Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
-        </p>
-    </footer>
+   <!-- Footer -->
+   <footer class="footer">
+    <p>
+        <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
+        <br>
+        <span style="font-size: 16px;">All rights reserved.</span>
+    </p>
+    <p style="font-size: 14px;">
+        📜 This website and its contents are protected under applicable copyright laws.  
+        Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
+    </p>
+    <p>
+        📩 Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
+    </p>
+</footer>
+
+<script>
+    // Automatically update the year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Show footer when scrolling down
+    window.onscroll = function() {
+        var footer = document.querySelector('.footer');
+        if (window.scrollY > 100) {
+            footer.classList.add('show');
+        } else {
+            footer.classList.remove('show');
+        }
+    };
+</script>
+
    
     <script>
         const content = {
