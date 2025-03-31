@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fleet Maintenance Contact Info</title>
+    <title>Space_X_LTD</title>
+    <link rel="icon" type="image/png" href="Favicon.png">
+    <!-- If using an ICO file -->
+    <link rel="shortcut icon" href="favicon.ico">
     <style>
         /* Background styling */
         body {
@@ -12,21 +15,6 @@
             padding: 0;
             background: url('RedFRT.jpg') no-repeat center center fixed;
             background-size: cover;
-            position: relative;
-        }
-
-        /* Blur effect */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            /*backdrop-filter: blur(8px); /* Adjust blur intensity */
-            /*filter: blur(8px); /* Fallback for older browsers */
-            z-index: -1;
         }
 
         h1 {
@@ -34,19 +22,48 @@
             margin-top: 25px;
             color: rgb(187, 13, 22);
             text-shadow: 
-        -1px -1px 0 rgb(251, 249, 249),  
-         1px -1px 0 rgb(250, 249, 249),
-        -1px  1px 0 rgb(250, 248, 248),
-         1px  1px 0 rgb(255, 253, 253); /* Creates a white outline effect */
+                -1px -1px 0 rgb(251, 249, 249),  
+                 1px -1px 0 rgb(250, 249, 249),
+                -1px  1px 0 rgb(250, 248, 248),
+                 1px  1px 0 rgb(255, 253, 253);
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .button-container button {
+            width: 80%;
+            max-width: 700px;
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: none;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .blue-button { background-color: #007BFF; color: white; }
+        .green-button { background-color: #007BFF; color: white; }
+        .orange-button { background-color: #007BFF; color: white; }
+        .red-button { background-color: #007BFF; color: white; }
+
+        .button-container button:hover {
+            filter: brightness(1.2);
         }
 
         table {
             width: 90%;
             margin: 20px auto;
             border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.8); /* Transparent background */
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
-            overflow: hidden;
         }
 
         th, td {
@@ -55,146 +72,26 @@
             text-align: center;
         }
 
-        th {
-            background-color: rgb(7, 50, 194);
-            color: white;
-        }
+        th { background-color: rgb(7, 50, 194); color: white; }
 
-        /* Responsive layout for smaller screens */
         @media (max-width: 768px) {
-            table, th, td {
-                font-size: 14px;
-            }
+            table, th, td { font-size: 14px; }
         }
- /* Initially hide the button container */
- #button-container {
-        display: none;
-        opacity: 0;
-        transform: translateY(-20px); /* Start position slightly above */
-        transition: opacity 1s ease, transform 1s ease;
-    }
-    .button-container {
-    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Softer border */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    width: 300px;
-    text-align: center;
-    display: none; /* Hide the buttons initially */
-
-    /* Blur effect */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* For Safari support */
-}
-
-        .button-container button {
-            padding: 15px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-        /* Default button colors */
-        .button-container button:hover {
-            background-color: #007BFF;
-            color: rgb(244, 244, 248);
-        }
-
-        .button-container button:active {
-            transform: scale(0.98);
-        }
-
-        .blue-button {
-            background-color: #007BFF;
-            color: white;
-        }
-
-        .green-button {
-            background-color: #f3c615;
-            color: white;
-        }
-
-        .orange-button {
-            background-color: #FFA500;
-            color: white;
-        }
-
-        .red-button {
-            background-color: #DC3545;
-            color: white;
-        }
-
-        .button-container button:focus {
-            outline: none;
-        }
-
-        /* Menu button styles */
-        .menu-button {
-    padding: 15px 25px;
-    background: linear-gradient(135deg, #3319f6, #1a0dab); /* Gradient for depth */
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px; /* Space for an icon */
-}
-
-/* Hover effect */
-.menu-button:hover {
-    background: linear-gradient(135deg, #01010e, #202040);
-    transform: scale(1.05); /* Slight scale effect */
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Active (clicked) effect */
-.menu-button:active {
-    transform: scale(0.98);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Optional: Add an icon using FontAwesome */
-.menu-button::before {
-    content: '\f0c9'; /* Unicode for FontAwesome "bars" icon */
-    font-family: FontAwesome;
-    font-size: 18px;
-}
-
-    </style>
     </style>
 </head>
 <body>
     <!-- Font Awsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
- <!-- Menu Button -->
- <button class="menu-button" onclick="toggleMenu()">Menu</button>
-    
        <!-- Button Container -->
-    <div class="button-container" id="button-container">
-        <button class="blue-button" onclick="loadContent('breakdown-procedures')">Breakdown</button>
-        <button class="green-button" onclick="loadContent('setting-triangle')">Setting Triangle</button>
-        <button class="orange-button" onclick="loadContent('pti-step-by-step')">PTI Step-by-Step</button>
-        <button class="red-button" onclick="loadContent('safety-info-tips')">Safety Info</button>
-        <!-- New buttons with different colors -->
+       <div class="button-container">
+        <button class="blue-button" onclick="window.location.href='breakdownProcedures.html'">Breakdown Procedures - Процедура при поломке грузовика</button>
+        <button class="green-button" onclick="window.location.href='settingTriangle.html'">setting road triangle - размещения дорожного треугольника</button>
+        <button class="orange-button" onclick="window.location.href='preTrip.html'">Pre Trip Inspection Guide</button>
+        <button class="red-button" onclick="window.location.href='safety.html'">Safety Info and Tips</button>
         <button class="blue-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/amio0gvi6p/index'">Tractor Inspection</button>
         <button class="green-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/eqdub1sdoq/index'">Trailer Inspection</button>
     </div>
-    
+
     <!-- Fleet Maintenance Contact Info -->
     <h1>Fleet Maintenance Contact Info</h1>
     <!-- Fleet Maintenance Table -->
