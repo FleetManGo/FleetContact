@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space_X_LTD</title>
+    <!-- Include FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="Favicon.png">
     <!-- If using an ICO file -->
     <link rel="shortcut icon" href="favicon.ico">
@@ -49,10 +51,12 @@
             font-weight: bold;
         }
 
-        .blue-button { background-color: #ff7b00; color: rgb(3, 0, 0); }
+        .blue-button { background-color: #ffd000; color: rgb(3, 0, 0); }
         .green-button { background-color: #ffd000; color: rgb(1, 0, 0); }
         .orange-button { background-color: #007BFF; color: white; }
         .red-button { background-color: #007BFF; color: white; }
+        .address-button { background-color: #3b3c3e; color: white; }
+        .safety-button { background-color: #f78a05; color: rgb(4, 4, 4); }
 
         .button-container button:hover {
             filter: brightness(1.2);
@@ -77,6 +81,12 @@
         @media (max-width: 768px) {
             table, th, td { font-size: 14px; }
         }
+        .button-container button i {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
     </style>
 </head>
 <body>
@@ -87,13 +97,16 @@
         <button class="orange-button" onclick="window.location.href='breakdownProcedures.html'">Breakdown Procedures - Процедура при поломке грузовика</button>
         <button class="orange-button" onclick="window.location.href='settingTriangle.html'">setting road triangle - размещения дорожного треугольника</button>
         <button class="orange-button" onclick="window.location.href='preTrip.html'">Pre Trip Inspection Guide</button>
-        <button class="orange-button" onclick="window.location.href='safety.html'">Safety Info and Tips</button>
-        <button class="blue-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/amio0gvi6p/index'">Tractor Inspection</button>
-        <button class="green-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/eqdub1sdoq/index'">Trailer Inspection</button>
-        <button class="orange-button" onclick="window.location.href='Address.html'">Repair shops and Storages</button>
+        <button class="safety-button" onclick="window.location.href='safety.html'"><i class="fa-solid fa-triangle-exclamation"></i>Safety Info and Tips</button>
+        <button class="blue-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/amio0gvi6p/index'">
+            <i class="fa-solid fa-truck"></i>
+            Tractor Inspection
+        </button>
+        <button class="green-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/eqdub1sdoq/index'"><i class="fa-solid fa-trailer"></i>Trailer Inspection</button>
+        <button class="address-button" onclick="window.location.href='Address.html'"><i class="fa-solid fa-screwdriver-wrench"></i>Repair shops and Storages&nbsp; <i class="fa-solid fa-warehouse"></i></button>
     </div>
 
-    <!-- Fleet Maintenance Contact Info -->
+    <!-- Fleet Maintenance Contact Info  <i class="fa-solid fa-truck-flatbed"></i> <i class="fa-solid fa-trailer"></i> -->
     <h1>Fleet Maintenance Contact Info</h1>
     <!-- Fleet Maintenance Table -->
     <table>
@@ -113,17 +126,17 @@
         </tr>
        <tr>
             <td>Bakai Fleet</td>
-            <td>10 AM - 9 PM</td>
+            <td>10 PM - 8 AM</td>
             <td><a href="tel:+13126689879">(312) 668-9879</a></td>
     <td><a href="https://t.me/Fleet_US" target="_blank">@Fleet_US</a></td>
     <td><a href="mailto:fleet@spacexcarries.com">fleet@spacexcarries.com</a></td>
         </tr>
         <tr>
-            <td>N/A</td>
-            <td></td>
-            <td><a href=""></td>
-                <td></td>
-            <td></td>
+            <td>Elmar Fleet</td>
+            <td>10 AM - 8 PM</td>
+            <td><a href="tel:+13126689879">(312) 668-9879</a></td>
+    <td><a href="https://t.me/ElmarFleet_Update" target="_blank">@ElmarFleet_Update</a></td>
+    <td><a href="mailto:fleet@spacexcarries.com">fleet@spacexcarries.com</a></td>
         </tr>
         <tr>
             <td>N/A</td>
