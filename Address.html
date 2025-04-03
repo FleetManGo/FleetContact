@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truck Service Locations & Storage Facilities</title>
+    <style>
+        @media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    .location {
+        padding: 15px;
+    }
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .map-container iframe {
+        height: 250px;
+    }
+}
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1516478177764-9fe5bd7e9717?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid #e74c3c;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        .location {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .address {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .map-container iframe {
+    width: 100%;
+    height: 300px; /* Reduce height for mobile */
+}
+        
+        iframe {
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        .btn, input[type="password"] {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    font-size: 1em;
+}
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn-direction {
+            background-color: #3498db;
+        }
+        
+        .btn-direction:hover {
+            background-color: #2980b9;
+        }
+        
+        .password-form {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #3498db;
+        }
+        
+        input[type="password"] {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+        
+        .password-btn {
+            background-color: #27ae60;
+        }
+        
+        .password-btn:hover {
+            background-color: #219653;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        .truck-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="truck-icon">🚛</span> Truck Service & Storage Locations</h1>
+        </header>
+        
+        <section id="repair-shops">
+            <h2>Repair Shops</h2>
+            
+            <div class="location">
+                <div class="address">1. 16434 Cherry Creek Ct, Joliet, IL 60433 (Adz Trucking)</div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3362.18486568061!2d-88.01734298798904!3d41.49108077116722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e65f6f1ef2305%3A0x49ab2edfa468e885!2sAdz%20Trucking!5e1!3m2!1sen!2sus!4v1743693750292!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/dir//16434+Cherry+Creek+Ct,+Joliet,+IL+60433" target="_blank" class="btn btn-direction">Get Directions</a>
+            </div>
+            
+            <div class="location">
+                <div class="address">2. 2101 W 37th Ave, Gary, IN 46408 (GOOD1 Truck Service)</div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3359.0739578566217!2d-87.36480918798632!3d41.5509852711598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8811e9afe0438a8d%3A0xa2b20797a373ebe5!2sGOOD1%20Truck%20Service!5e1!3m2!1sen!2sus!4v1743693787968!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/dir//2101+W+37th+Ave,+Gary,+IN+46408" target="_blank" class="btn btn-direction">Get Directions</a>
+            </div>
+            
+            <div class="location">
+                <div class="address">3. 1000 Chase Ave, Elk Grove Village, IL 60007 (Pochinki Truck & Trailer Repair)</div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3335.093980328708!2d-87.97363618796552!3d42.01040467110755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fb1827b418cc5%3A0x63978932f8dcd5c2!2sPochinki%20Truck%20%26%20Trailer%20Repair!5e1!3m2!1sen!2sus!4v1743693814042!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/dir//1000+Chase+Ave,+Elk+Grove+Village,+IL+60007" target="_blank" class="btn btn-direction">Get Directions</a>
+            </div>
+            
+            <div class="location">
+                <div class="address">4. 250 E Illinois Ave, Palatine, IL 60067 (Karen Truck & Trailer Repair Inc)</div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.5889325966705!2d-88.0395048879616!3d42.0962579710985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fa5bb24a393e5%3A0x8d38a8f4fa13f018!2sKaren%20Truck%20%26%20Trailer%20Repair%20Inc!5e1!3m2!1sen!2sus!4v1743693842138!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/dir//250+E+Illinois+Ave,+Palatine,+IL+60067" target="_blank" class="btn btn-direction">Get Directions</a>
+            </div>
+        </section>
+        
+        <section id="storage">
+            <h2>Storage Facilities</h2>
+            
+            <div class="location">
+                <div class="address">1. 2660 Cherry Hill Rd, Joliet, IL 60433 (A1 Will County Self Storage)</div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3136.2367908853985!2d-88.02637872841483!3d41.4758864684035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e6591d2a20117%3A0xdd6d68d66e19867a!2sA1%20Will%20County%20Self%20Storage!5e1!3m2!1sen!2sus!4v1743693900233!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/dir//2660+Cherry+Hill+Rd,+Joliet,+IL+60433" target="_blank" class="btn btn-direction">Get Directions</a>
+                <button class="btn password-btn" onclick="togglePasswordForm('storage1')">Get Access Info</button>
+    
+                <div id="storage1" class="password-form">
+                    <p id="error-msg1" style="display: none; color: red; font-weight: bold;">Incorrect password. Try again.</p>
+                    <p>Please enter the password to view access information:</p>
+                    <input type="password" id="pass1" placeholder="Enter password">
+                    <button class="btn" onclick="checkPassword('pass1', 'storage1-info', 'error-msg1')">Submit</button>
+                    <div id="storage1-info" style="display: none; margin-top: 15px;">
+                        <p><strong>Gate Access Code:</strong> *3438280#</p>
+                        <p><strong>Unit#</strong> A19</p>
+                        <p><strong>Gate Hours:</strong> 5:00 AM - 11:00 PM</p>
+                        <p><strong>Contact:</strong> (815) 555-1234</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="location">
+                <div class="address">2. 1991 W Haven Ave, New Lenox, IL 60451</div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3361.0810904113364!2d-88.00626748798808!3d41.512343471164435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e68afbbbbf195%3A0x6bb19192ae7e17ec!2s1991%20W%20Haven%20Ave%2C%20New%20Lenox%2C%20IL%2060451!5e1!3m2!1sen!2sus!4v1743694481304!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/dir//1991+W+Haven+Ave,+New+Lenox,+IL+60451" target="_blank" class="btn btn-direction">Get Directions</a>
+                <button class="btn password-btn" onclick="togglePasswordForm('storage2')">Get Access Info</button>
+    
+                <div id="storage2" class="password-form">
+                    <p id="error-msg2" style="display: none; color: red; font-weight: bold;">Incorrect password. Try again.</p>
+                    <p>Please enter the password to view access information:</p>
+                    <input type="password" id="pass2" placeholder="Enter password">
+                    <button class="btn" onclick="checkPassword('pass2', 'storage2-info', 'error-msg2')">Submit</button>
+                    <div id="storage2-info" style="display: none; margin-top: 15px;">
+                        <p><strong>Unit#</strong> 1194</p>
+                        <p><strong>Access Code:</strong> *11943140#</p>
+                        <p><strong>Gate Hours:</strong> 5:00 AM - 11:00 PM</p>
+                        <p><strong>Contact:</strong> (815) 555-1234</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 Storage Facilities | For authorized personnel only</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Password for storage access (change this to your desired password)
+        const STORAGE_PASSWORD = "3501";
+
+function togglePasswordForm(id) {
+    const form = document.getElementById(id);
+    form.style.display = form.style.display === 'block' ? 'none' : 'block';
+}
+
+function checkPassword(inputId, infoId, errorId) {
+    const passwordInput = document.getElementById(inputId);
+    const infoDiv = document.getElementById(infoId);
+    const errorMsg = document.getElementById(errorId);
+
+    if (passwordInput.value === STORAGE_PASSWORD) {
+        infoDiv.style.display = 'block'; // Show the access info
+        passwordInput.style.border = "1px solid #27ae60"; // Green border for success
+        errorMsg.style.display = "none"; // Hide error message
+    } else {
+        errorMsg.style.display = "block"; // Show error message
+        passwordInput.style.border = "1px solid red"; // Red border for error
+    }
+}
+    </script>
+</body>
+</html>
