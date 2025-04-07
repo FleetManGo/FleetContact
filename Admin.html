@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .narrow {
+      max-width: 300px;
+      width: 100%;
+    }
+    .wide {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+    input[type="password"] {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 6px;
+      width: 100%;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #00bcd4;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #0097a7;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container narrow" id="loginBox">
+    <h1>Admin Access</h1>
+    <input type="password" id="password" placeholder="Enter Password" />
+    <button onclick="checkPassword()">Enter</button>
+    <p id="errorMsg" style="color: #f88; display: none; margin-top: 1rem;">Incorrect password</p>
+  </div>
+
+  <div class="container wide hidden" id="welcomeBox">
+    <h1>Hello, World!</h1>
+    <p>Welcome, Admin.</p>
+  </div>
+
+  <script>
+    const correctPassword = "admin123"; // Change this to your desired password
+
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+      const errorMsg = document.getElementById("errorMsg");
+      if (input === correctPassword) {
+        document.getElementById("loginBox").classList.add("hidden");
+        document.getElementById("welcomeBox").classList.remove("hidden");
+      } else {
+        errorMsg.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

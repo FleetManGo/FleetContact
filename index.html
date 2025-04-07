@@ -29,6 +29,16 @@
                 -1px  1px 0 rgb(250, 248, 248),
                  1px  1px 0 rgb(255, 253, 253);
         }
+        .admin-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
 
         .button-container {
             display: flex;
@@ -50,6 +60,7 @@
             text-transform: uppercase;
             font-weight: bold;
         }
+        
 
         .blue-button { background-color: #ffd000; color: rgb(3, 0, 0); }
         .green-button { background-color: #ffd000; color: rgb(1, 0, 0); }
@@ -90,6 +101,7 @@
     </style>
 </head>
 <body>
+    <button class="admin-button" onclick="window.location.href='Admin.html'">Admin</button> 
     <!-- Font Awsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
        <!-- Button Container -->
