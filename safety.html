@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semi Truck Safety</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="Favicon.png">
+    <!-- If using an ICO file -->
+    <link rel="shortcut icon" href="favicon.ico">
     <style>
         /* Set full-page background on content wrapper */
         .content-wrapper {
@@ -49,6 +52,10 @@
             gap: 15px;
             margin-top: 20px;
         }
+        .button-container a:last-child {
+    background-color: rgb(177, 14, 14);
+    color: white;
+}
 
         /* Styled buttons */
         .nav-button {
@@ -74,20 +81,18 @@
 
         /* Home Button */
         .home-button {
-            display: block;
-            width: 80px;
-            padding: 8px;
-            text-align: center;
-            background-color: #004a7c;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            transition: background-color 0.3s ease;
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
+      bottom: 20px;
+      right: 20px;
+      background-color: #212529;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
         }
 
         .home-button:hover {
@@ -161,15 +166,16 @@
 
         <!-- Navigation Buttons -->
         <div class="button-container">
-            <a href="mustHave.html" class="nav-button">Must have checklist</a>
-            <a href="IFTA.html" class="nav-button">IFTA REGULATIONS</a>
-            <a href="inspection.html" class="nav-button">PrePass Mobile</a>
-            <a href="safe-driving.html" class="nav-button">Safe Driving Tips</a>
+            <a href="mustHave.html" class="nav-button">Must have checklist <i class="fa-solid fa-list"></i></a>
+            <a href="IFTA.html" class="nav-button">IFTA REGULATIONS <i class="fa-regular fa-square"></i></a>
+            <a href="inspection.html" class="nav-button">PrePass Mobile <i class="fa-solid fa-italic"></i></a>
+            <a href="safe-driving.html" class="nav-button">Safe Driving Tips <i class="fa-solid fa-triangle-exclamation"></i></a>
+            <a href="InAccident.html" class="nav-button"> In Case Of an accident <i class="fa-solid fa-car-burst"></i></a>
         </div>
     </div>
 
     <!-- Home Button -->
-    <a href="index.html" class="home-button">Home</a>
+    <a href="index.html" class="home-button">⬅ Home</a>
 
     <!-- Footer -->
     <footer class="footer">
