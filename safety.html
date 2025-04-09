@@ -1,164 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semi Truck Safety</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="Favicon.png">
-    <!-- If using an ICO file -->
-    <link rel="shortcut icon" href="favicon.ico">
-    <style>
-        /* Set full-page background on content wrapper */
-        .content-wrapper {
-            background-image: url('blue.jpg'); /* Background applied to content */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh; /* Full viewport height */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            color: white;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semi Truck Safety</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="icon" type="image/png" href="Favicon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-        /* Page Title */
-        .title {
-            font-size: 3em;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-top: 30px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-        }
+    .content-wrapper {
+      background-image: url('blue.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 5vh 5vw;
+    }
 
-        /* Semi Truck Safety decoration */
-        .safety-text {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin: 10px 0;
-            letter-spacing: 2px;
-        }
-        .yellow-button {
-    background-color: #FFD700 !important; /* Bright yellow with !important to ensure it overrides other styles */
-    color: black !important; /* Ensure text remains black */
-}
-        /* Button container */
-        .button-container {
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .button-container a:last-child {
-    background-color: rgb(177, 14, 14);
-    color: white;
-}
+    .title {
+      font-size: 3em;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 30px 0 10px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
 
-        /* Styled buttons */
-        .nav-button {
-            width: 100%;
-            padding: 20px;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-align: center;
-            background-color: rgba(0, 74, 124, 0.8); /* Semi-transparent blue */
-            color: white;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s;
-            border-radius: 8px;
-        }
+    .safety-text {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 10px 0 20px;
+      letter-spacing: 2px;
+    }
 
-        .nav-button:hover {
-            background-color: rgba(0, 102, 204, 0.9);
-            transform: scale(1.05);
-        }
+    .button-container {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        /* Home Button */
-        .home-button {
-            position: fixed;
+    .nav-button {
+      width: 100%;
+      padding: 18px 12px;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: rgba(0, 74, 124, 0.8);
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .nav-button:hover {
+      background-color: rgba(0, 102, 204, 0.9);
+      transform: scale(1.05);
+    }
+
+    .yellow-button {
+      background-color: #ffd700 !important;
+      color: black !important;
+    }
+
+    .button-container a:last-child {
+      background-color: rgb(177, 14, 14);
+      color: white;
+    }
+
+    .home-button {
+      position: fixed;
       bottom: 20px;
       right: 20px;
       background-color: #212529;
       color: white;
-      padding: 12px 20px;
-      border: none;
+      padding: 10px 16px;
       border-radius: 30px;
-      text-decoration: none;
       font-size: 14px;
+      text-decoration: none;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       transition: background 0.3s ease;
-        }
+    }
 
-        .home-button:hover {
-            background-color: #0066cc;
-        }
+    .home-button:hover {
+      background-color: #0066cc;
+    }
 
-        /* Footer at the bottom of the page */
-        .footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #f8f8f8;
-            border-top: 2px solid #ddd;
-            color: black;
-            width: 100%;
-            margin-top: auto; /* Ensures the footer is pushed to the bottom of the page */
-        }
+    .footer {
+      text-align: center;
+      padding: 20px 10px;
+      background-color: #f8f8f8;
+      border-top: 2px solid #ddd;
+      color: black;
+      width: 100%;
+      margin-top: auto;
+    }
 
-        .footer a {
-            color: #007bff;
-            text-decoration: none;
-        }
+    .footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2em; /* Adjust title font size on smaller screens */
-            }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .title {
+        font-size: 2em;
+      }
 
-            .safety-text {
-                font-size: 1.2em; /* Adjust safety text font size */
-            }
+      .safety-text {
+        font-size: 1.2em;
+      }
 
-            .nav-button {
-                font-size: 1.2em; /* Smaller buttons for mobile */
-                padding: 15px; /* Adjust padding for mobile */
-            }
+      .nav-button {
+        font-size: 1.2em;
+        padding: 15px 10px;
+      }
 
-            .home-button {
-                width: 60px; /* Smaller home button */
-                font-size: 1em; /* Adjust font size for home button */
-            }
-        }
+      .home-button {
+        font-size: 13px;
+        padding: 10px 14px;
+      }
+    }
 
-        @media (max-width: 480px) {
-            .title {
-                font-size: 1.5em; /* Further adjust title font size on very small screens */
-            }
+    @media (max-width: 480px) {
+      .title {
+        font-size: 1.5em;
+      }
 
-            .safety-text {
-                font-size: 1.1em; /* Slightly smaller text for very small screens */
-            }
+      .safety-text {
+        font-size: 1.1em;
+      }
 
-            .nav-button {
-                font-size: 1.1em; /* Adjust buttons for smaller screens */
-                padding: 12px; /* Adjust padding for smaller screens */
-            }
+      .nav-button {
+        font-size: 1.1em;
+        padding: 12px 10px;
+      }
 
-            .home-button {
-                width: 50px; /* Even smaller home button */
-                font-size: 0.9em; /* Smaller font size for the home button */
-            }
-        }
-    </style>
+      .home-button {
+        font-size: 12px;
+        padding: 8px 12px;
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .footer p {
+        font-size: 13px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -166,17 +170,15 @@
     <div class="content-wrapper">
         <div class="title">Truck Driver Safety Guidelines</div>
         <div class="safety-text">Safety First - Drive Smart - Stay Alert</div>
-
-        <!-- Navigation Buttons -->
+    
         <div class="button-container">
-            <a href="mustHave.html" class="nav-button">Must have checklist <i class="fa-solid fa-list"></i></a>
-            <a href="IFTA.html" class="nav-button">IFTA REGULATIONS <i class="fa-regular fa-square"></i></a>
-            <a href="inspection.html" class="nav-button">PrePass Mobile <i class="fa-solid fa-italic"></i></a>
-            <a href="safe-driving.html" class="nav-button yellow-button">
-                Driver Safety Alerts <i class="fa-solid fa-triangle-exclamation"></i></a>              
-            <a href="InAccident.html" class="nav-button"> In Case Of an accident <i class="fa-solid fa-car-burst"></i></a>
+          <a href="mustHave.html" class="nav-button">Must have checklist <i class="fa-solid fa-list"></i></a>
+          <a href="IFTA.html" class="nav-button">IFTA REGULATIONS <i class="fa-regular fa-square"></i></a>
+          <a href="inspection.html" class="nav-button">PrePass Mobile <i class="fa-solid fa-italic"></i></a>
+          <a href="safe-driving.html" class="nav-button yellow-button">Driver Safety Alerts <i class="fa-solid fa-triangle-exclamation"></i></a>
+          <a href="InAccident.html" class="nav-button">In Case Of an Accident <i class="fa-solid fa-car-burst"></i></a>
         </div>
-    </div>
+      </div>
 
     <!-- Home Button -->
     <a href="index.html" class="home-button">⬅ Home</a>
@@ -184,22 +186,20 @@
     <!-- Footer -->
     <footer class="footer">
         <p>
-            <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
-            <br>
-            <span style="font-size: 16px;">All rights reserved.</span>
+          <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD</span><br />
+          <span style="font-size: 16px;">All rights reserved.</span>
         </p>
         <p style="font-size: 14px;">
-            📜 This website and its contents are protected under applicable copyright laws.  
-            Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
+          📜 This website and its contents are protected under applicable copyright laws.
+          Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
         </p>
         <p>
-            📩 Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
+          📩 Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
         </p>
-    </footer>
-
-    <script>
-        // Automatically update the year
+      </footer>
+    
+      <script>
         document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-</body>
-</html>
+      </script>
+    </body>
+    </html>
