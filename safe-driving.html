@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driver Safety Message</title>
+  <link rel="icon" type="image/png" href="Favicon.png">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background: #0055a5;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background: #e0e0e0;
+      overflow-x: auto;
+    }
+    .tab {
+      padding: 1rem;
+      cursor: pointer;
+      background: #e0e0e0;
+      border: none;
+      font-size: 1rem;
+      min-width: 100px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .tab:hover, .tab.active {
+      background: #c8dfff;
+    }
+    .content-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 300%;
+    }
+    .content {
+      width: 100%;
+      padding: 2rem;
+      flex-shrink: 0;
+    }
+    h2 {
+      color: #0055a5;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    @media (max-width: 768px) {
+      .content {
+        padding: 1rem;
+      }
+    }
+    .home-button {
+            position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #212529;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+        }
+        
+        .home-button:hover {
+            background-color: #187bcd; /* Darker blue on hover */
+        }
+         /* Footer at the bottom of the page */
+         .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-top: 2px solid #ddd;
+            color: black;
+            width: 100%;
+            margin-top: auto; /* Ensures the footer is pushed to the bottom of the page */
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🚨 Driver Safety Alerts 🚨</h1>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchLang(0)">English</button>
+    <button class="tab" onclick="switchLang(1)">Русский</button>
+    <button class="tab" onclick="switchLang(2)">Кыргызча</button>
+  </div>
+
+  <div class="content-wrapper" id="contentWrapper">
+    <!-- English -->
+    <div class="content">
+      <h2>🚨 Attention CDL Drivers!</h2>
+      <p>Please make sure at all times that your sticker and logbook show the same company name. This is critical for compliance during inspections.</p>
+      <p><strong>👉 If you are stopped for inspection:</strong></p>
+      <ul>
+        <li>Do NOT show any Bill of Lading, fuel receipts, or other documents unless specifically instructed.</li>
+        <li>If you're unsure how to respond to any question, DO NOT answer.</li>
+        <li>Instead, call Safety, the Logbook Team, or your Dispatcher immediately for guidance.</li>
+      </ul>
+      <p>Stay safe and stay sharp out there! 🛣💪</p>
+
+      <h2>🚛 Daily Safety Reminder for CDL Drivers 🚧</h2>
+      <ul>
+        <li>✅ Pre-trip inspection — tires, lights, brakes, and fluids</li>
+        <li>✅ Seatbelt on — no exceptions</li>
+        <li>✅ Logbook up to date — company name must match sticker</li>
+        <li>✅ Binder in the truck — all required documents inside</li>
+        <li>✅ Plan your route — avoid restricted roads and low bridges</li>
+        <li>✅ Take breaks — stay alert, don't drive tired</li>
+        <li>✅ Stay calm & professional during inspections or stops</li>
+        <li>✅ Watch your speed!</li>
+      </ul>
+      <p>⚠️ Always follow posted signs — they override general limits!</p>
+      <p>🚧 Construction zones — slow down, obey all signage, and watch for workers</p>
+      <p>🏡 Avoid residential streets with "No Trucks" signs — take legal truck routes only!</p>
+      <p><strong>Your safety is our priority. Drive smart, stay legal, and get home safe! 💪🛣</strong></p>
+    </div>
+
+    <!-- Russian -->
+    <div class="content">
+      <h2>🚨 Внимание, водители CDL!</h2>
+      <p>Пожалуйста, всегда проверяйте, чтобы на наклейке и в путевом листе была указана одна и та же компания. Это важно для соблюдения требований при проверках.</p>
+      <p><strong>👉 Если вас остановили для проверки:</strong></p>
+      <ul>
+        <li>НЕ показывайте накладные, чеки на топливо или другие документы без указания.</li>
+        <li>Если вы не уверены, как ответить — НЕ отвечайте.</li>
+        <li>Позвоните в отдел безопасности, в логбуковую службу или вашему диспетчеру.</li>
+      </ul>
+      <p>Берегите себя и будьте внимательны! 🛣💪</p>
+
+      <h2>🚛 Ежедневное напоминание о безопасности для водителей CDL 🚧</h2>
+      <ul>
+        <li>✅ Осмотр перед рейсом — шины, свет, тормоза, жидкости</li>
+        <li>✅ Ремень безопасности — обязательно</li>
+        <li>✅ Актуальный логбук — название компании должно совпадать</li>
+        <li>✅ Папка в грузовике — все нужные документы внутри</li>
+        <li>✅ Планируйте маршрут — избегайте запретных дорог и низких мостов</li>
+        <li>✅ Делайте перерывы — не управляйте в утомлённом состоянии</li>
+        <li>✅ Будьте спокойны и профессиональны при проверках</li>
+        <li>✅ Следите за скоростью!</li>
+      </ul>
+      <p>⚠️ Соблюдайте дорожные знаки — они главнее общих правил!</p>
+      <p>🚧 В зонах строительства — сбавьте скорость, следите за знаками и рабочими</p>
+      <p>🏡 Избегайте жилых улиц с знаками "Нет грузовиков" — используйте разрешённые маршруты!</p>
+      <p><strong>Ваша безопасность — наш приоритет. Езжайте с умом, соблюдайте закон и возвращайтесь домой! 💪🛣</strong></p>
+    </div>
+
+    <!-- Kyrgyz -->
+    <div class="content">
+      <h2>🚨 Урматтуу CDL айдоочулар!</h2>
+      <p>Стикер жана логбукта бир эле компаниянын аталышы көрсөтүлгөнүнө дайыма ынанганыңыз маанилүү. Бул текшерүүлөрдө эрежелерди сактоо үчүн абдан маанилүү.</p>
+      <p><strong>👉 Эгерде сизди текшерүү үчүн токтотушса:</strong></p>
+      <ul>
+        <li>Эч кандай товар кагазын, күйүүчү май түбөлүкчөсүн же башка документтерди көрсөтпөңүз, эгерде так айтылбаса.</li>
+        <li>Эгер жоопту билбей жатсаңыз — жооп бербеңиз.</li>
+        <li>Анын ордуна Коопсуздук бөлүмүнө, Логбук командасына же Диспетчерге дароо чалыңыз.</li>
+      </ul>
+      <p>Коопсуз болуңуз жана абайлаңыз! 🛣💪</p>
+
+      <h2>🚛 CDL айдоочулар үчүн күнүмдүк коопсуздук эскертмеси 🚧</h2>
+      <ul>
+        <li>✅ Жолго чыккандан мурда текшерүү — шиналар, жарыктар, тормоздор, суюктуктар</li>
+        <li>✅ Коопсуздук куру — сөзсүз</li>
+        <li>✅ Логбук жаңыртылган — компаниянын аты стикер менен дал келиши керек</li>
+        <li>✅ Папка машинеде — бардык талап кылынган документтер ичинде</li>
+        <li>✅ Маршрутту пландаңыз — тыюу салынган жолдордон жана төмөн көпүрөлөрдөн качыңыз</li>
+        <li>✅ Тынымдар жасаңыз — чарчап айдабаңыз</li>
+        <li>✅ Текшерүүлөрдө сабырдуу жана кесипкөй болуңуз</li>
+        <li>✅ Ылдамдыкты караңыз!</li>
+      </ul>
+      <p>⚠️ Белгилерди дайыма караңыз — алар жалпы чектөөлөрдөн маанилүү!</p>
+      <p>🚧 Курулуш аймактарында — жайыраак айдаңыз, белгилерди жана жумушчуларды караңыз</p>
+      <p>🏡 "Жүк унааларына тыюу салынган" жолдордон качыңыз — мыйзамдуу жолдорду тандаңыз!</p>
+      <p><strong>Сиздин коопсуздугуңуз — биздин артыкчылыгыбыз. Акыл менен айдаңыз, эрежелерди сактаңыз жана аман-эсен үйгө келиңиз! 💪🛣</strong></p>
+    </div>
+  </div>
+  <a href="safety.html" class="home-button">Back To Safety</a>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
+            <br>
+            <span style="font-size: 16px;">All rights reserved.</span>
+        </p>
+        <p style="font-size: 14px;">
+            📜 This website and its contents are protected under applicable copyright laws.  
+            Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
+        </p>
+        <p>
+            📩 Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
+        </p>
+    </footer>
+
+    <script>
+        // Automatically update the year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  <script>
+    function switchLang(index) {
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach((tab, i) => tab.classList.toggle('active', i === index));
+      const wrapper = document.getElementById('contentWrapper');
+      wrapper.style.transform = `translateX(-${index * 100}%)`;
+      
+      // Update URL hash
+      const hashes = ['', '#russian', '#kyrgyz'];
+      window.location.hash = hashes[index];
+    }
+
+    // Check URL hash on page load
+    window.onload = function() {
+      const hash = window.location.hash;
+      let defaultLang = 0;
+      
+      if (hash === '#russian') defaultLang = 1;
+      else if (hash === '#kyrgyz') defaultLang = 2;
+      
+      switchLang(defaultLang);
+    };
+  </script>
+</body>
+</html>

@@ -62,19 +62,52 @@
     .hidden {
       display: none;
     }
+    .gif-container {
+      margin-top: 20px;
+    }
+
+    .gif-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .game {
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
+    }
+
+    .game:hover {
+      background-color: #e91e63;
+    }
   </style>
 </head>
 <body>
-  <div class="container narrow" id="loginBox">
-    <h1>Admin Access</h1>
-    <input type="password" id="password" placeholder="Enter Password" />
-    <button onclick="checkPassword()">Enter</button>
-    <p id="errorMsg" style="color: #f88; display: none; margin-top: 1rem;">Incorrect password</p>
-  </div>
+    <div class="container narrow" id="loginBox">
+        <h1>Admin Access</h1>
+        <form onsubmit="checkPassword(); return false;">
+          <input type="password" id="password" placeholder="Enter Password" required autofocus />
+          <button type="submit">Enter</button>
+        </form>
+        <p id="errorMsg" style="color: #f88; display: none; margin-top: 1rem;">
+          Incorrect password
+        </p>
+      </div>
 
   <div class="container wide hidden" id="welcomeBox">
-    <h1>Welcome, Admin.</H1>
-        <p>New updates are coming please waith with patience</p>
+    <h1>Need a Laugh?</h1>
+    <button class="game" onclick="showSurprise()">Dont click this button</button>
+  
+    <div class="gif-container" id="gifContainer"></div>
+  
   </div>
 
   <script>
@@ -89,6 +122,22 @@
       } else {
         errorMsg.style.display = "block";
       }
+    }
+  </script>
+  <script>
+    window.onload = () => {
+      document.getElementById("password").focus();
+    };
+  </script>
+   <script>
+    const gifs = [
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG1hOHE5cjk4OXFuN29rMHgzcXNkcmlpN2h1OGt0NHA0dG5kbHNodCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/X4YqmJEl6wJoY/giphy.gif",
+     
+    ];
+
+    function showSurprise() {
+      const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+      document.getElementById("gifContainer").innerHTML = `<img src="${randomGif}" alt="Funny GIF">`;
     }
   </script>
 </body>
