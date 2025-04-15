@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CDL Driver's Binder Checklist</title>
     <link rel="icon" type="image/png" href="Favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
-            --accent-color: #e74c3c;
             --light-bg: #ecf0f1;
             --dark-text: #2c3e50;
-            --light-text: #ecf0f1;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--light-bg);
             color: var(--dark-text);
-            padding: 0;
             margin: 0;
+            padding-bottom: 80px; /* Space for fixed nav */
             line-height: 1.6;
         }
         
@@ -35,49 +34,11 @@
             color: white;
             padding: 20px 0;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
         }
         
         h1 {
             margin: 0;
             font-size: 1.8rem;
-        }
-        
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            .header-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-        
-        .search-container {
-            position: relative;
-        }
-        
-        #search {
-            padding: 10px 15px;
-            border-radius: 25px;
-            border: 2px solid #ddd;
-            width: 250px;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        #search:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
         }
         
         h2 {
@@ -95,27 +56,13 @@
             gap: 15px;
         }
         
-        @media (max-width: 768px) {
-            .checklist {
-                grid-template-columns: 1fr;
-            }
-        }
-        
         .checklist li {
             background: white;
-            margin: 0;
             padding: 15px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-        }
-        
-        .checklist li:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .checklist li img {
@@ -123,11 +70,6 @@
             height: 30px;
             margin-right: 15px;
             object-fit: contain;
-            transition: transform 0.3s;
-        }
-        
-        .checklist li:hover img {
-            transform: scale(1.1);
         }
         
         .checkmark {
@@ -136,89 +78,78 @@
             font-weight: bold;
         }
         
-        /* Modal for enlarged images */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            overflow: auto;
-        }
-        
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            animation: zoom 0.3s;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        @keyframes zoom {
-            from {transform: scale(0.1) translateY(-50%);}
-            to {transform: scale(1) translateY(-50%);}
-        }
-        
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        
-        .close:hover {
-            color: #bbb;
-        }
-        
         footer {
             text-align: center;
             padding: 20px;
-            margin-top: 40px;
             background-color: var(--primary-color);
             color: white;
         }
         
-        .highlight {
-            background-color: yellow;
-            font-weight: bold;
-        }
         .home-button {
             position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #212529;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 14px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease;
+            bottom: 100px;
+            right: 20px;
+            background-color: #212529;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            z-index: 1001;
         }
         
-        .home-button:hover {
-            background-color: #187bcd; /* Darker blue on hover */
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f9f4f4;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        /* 👇 Add this to remove underline*/
+.bottom-nav a {
+    text-decoration: none;
+    color: inherit;
+}
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #555;
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        
+        /* Individual icon colors */
+        .nav-item i.fa-house { color: #000000; }
+        .nav-item i.fa-truck-fast { color: #28a745; }
+        .nav-item i.fa-triangle-exclamation { color: #f1c40f; }
+        .nav-item i.fa-screwdriver-wrench { color: #333333; }
+        .nav-item i.fa-phone-flip { color: #3498db; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .checklist {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container header-content">
+        <div class="container">
             <h1>CDL Driver's Binder Checklist</h1>
-            <div class="search-container">
-                <input type="text" id="search" placeholder="Search documents...">
-            </div>
         </div>
     </header>
     
@@ -226,203 +157,163 @@
         <h2>Required Documents</h2>
         <ul class="checklist">
             <li>
-                <img src="Images/Binder.png" alt="Cover Page" class="document-img">
+                <img src="Images/Binder.png" alt="Cover Page">
                 <span class="document-name">Binder Cover Page</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/mc.png" alt="MC Certificate" class="document-img">
+                <img src="Images/mc.png" alt="MC Certificate">
                 <span class="document-name">MC (Motor Carrier) Certificate</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/Registration.png" alt="Truck Registration" class="document-img">
+                <img src="Images/Registration.png" alt="Truck Registration">
                 <span class="document-name">Truck Registration</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/Annual.png" alt="Annual Vehicle Inspection" class="document-img">
+                <img src="Images/Annual.png" alt="Annual Vehicle Inspection">
                 <span class="document-name">Annual Vehicle Inspection Report</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/Lease.png" alt="Lease Agreement" class="document-img">
+                <img src="Images/Lease.png" alt="Lease Agreement">
                 <span class="document-name">Lease Agreement of Truck (If Applicable)</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/TRLRegistration.png" alt="Trailer Registration" class="document-img">
+                <img src="Images/TRLRegistration.png" alt="Trailer Registration">
                 <span class="document-name">Trailer Registration (If There is a Trailer)</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/Annual.png" alt="Trailer Inspection" class="document-img">
+                <img src="Images/Annual.png" alt="Trailer Inspection">
                 <span class="document-name">Trailer Annual Inspection Report (If There is a Trailer)</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/Liability.png" alt="Liability Insurance" class="document-img">
+                <img src="Images/Liability.png" alt="Liability Insurance">
                 <span class="document-name">Certificate of Liability Insurance</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/Ifta.png" alt="IFTA License" class="document-img">
+                <img src="Images/Ifta.png" alt="IFTA License">
                 <span class="document-name">IFTA License – Space X</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/Cab.png" alt="Kentucky Permit" class="document-img">
+                <img src="Images/Cab.png" alt="Kentucky Permit">
                 <span class="document-name">Kentucky Permit</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/.png" alt="Connecticut Permit" class="document-img">
+                <img src="Images/.png" alt="Connecticut Permit">
                 <span class="document-name">Connecticut Permit</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/HUT.png" alt="New York HUT Permit" class="document-img">
+                <img src="Images/HUT.png" alt="New York HUT Permit">
                 <span class="document-name">New York HUT Permit</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/Permit.png" alt="New Mexico Permit" class="document-img">
+                <img src="Images/Permit.png" alt="New Mexico Permit">
                 <span class="document-name">New Mexico Permit</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/.png" alt="Oregon Permit" class="document-img">
+                <img src="Images/.png" alt="Oregon Permit">
                 <span class="document-name">Oregon Permit</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/Pen.png" alt="Pennsylvania Permit" class="document-img">
+                <img src="Images/Pen.png" alt="Pennsylvania Permit">
                 <span class="document-name">Pennsylvania Permit</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/.png" alt="ELD Manual" class="document-img">
+                <img src="Images/.png" alt="ELD Manual">
                 <span class="document-name">ELD Instruction Manual Guide</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/ELD.png" alt="ELD Malfunction" class="document-img">
+                <img src="Images/ELD.png" alt="ELD Malfunction">
                 <span class="document-name">ELD Malfunction Form & Instructions</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/Accident.png" alt="Accident Form" class="document-img">
+                <img src="Images/Accident.png" alt="Accident Form">
                 <span class="document-name">In Case of Accident Form</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/.png" alt="Liability Form" class="document-img">
+                <img src="Images/.png" alt="Liability Form">
                 <span class="document-name">Accident Liability Form</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/.png" alt="Paper Logbook" class="document-img">
+                <img src="Images/.png" alt="Paper Logbook">
                 <span class="document-name">Paper Logbook (Spare Logs)</span>
                 <span class="checkmark"></span>
             </li>
             <li>
-                <img src="Images/.png" alt="CCF Form" class="document-img">
+                <img src="Images/.png" alt="CCF Form">
                 <span class="document-name">CCF Form (Custody and Control Form for Drug Testing)</span>
                 <span class="checkmark"></span>
             </li>
         </ul>
     </div>
     
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
+    <footer>
+        <p>
+            <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
+            <br>
+            <span style="font-size: 16px;">All rights reserved.</span>
+        </p>
+        <p style="font-size: 14px;">
+            This website and its contents are protected under applicable copyright laws.
+        </p>
+        <p>
+            Contact us at <a href="mailto:fleet@spacexcarriers.com" style="color: #FFD700;">fleet@spacexcarriers.com</a>
+        </p>
+    </footer>
     
-    <a href="safety.html" class="home-button">Back To Safety</a>
-   <!-- Footer -->
-   <footer class="footer">
-    <p>
-        <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
-        <br>
-        <span style="font-size: 16px;">All rights reserved.</span>
-    </p>
-    <p style="font-size: 14px;">
-        📜 This website and its contents are protected under applicable copyright laws.  
-        Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
-    </p>
-    <p>
-        📩 Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
-    </p>
-</footer>
+    <nav class="bottom-nav">
+        <a href="home.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </div>
+        </a>
+        <a href="Inspections.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <span>Inspections</span>
+            </div>
+        </a>
+        <a href="safety.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Safety</span>
+            </div>
+        </a>
+        <a href="Address.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <span>Repairs</span>
+            </div>
+        </a>
+        <a href="contacts.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-phone-flip"></i>
+                <span>Contacts</span>
+            </div>
+        </a>
+    </nav>
 
-<script>
-    // Automatically update the year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Show footer when scrolling down
-    window.onscroll = function() {
-        var footer = document.querySelector('.footer');
-        if (window.scrollY > 100) {
-            footer.classList.add('show');
-        } else {
-            footer.classList.remove('show');
-        }
-    };
-</script>
-    
     <script>
-        // Image modal functionality
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImage");
-        const closeBtn = document.getElementsByClassName("close")[0];
-        
-        document.querySelectorAll('.document-img').forEach(img => {
-            img.addEventListener('click', function() {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                modalImg.alt = this.alt;
-            });
-        });
-        
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-        
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        
-        // Search functionality
-        document.getElementById('search').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const documents = document.querySelectorAll('.document-name');
-            
-            documents.forEach(doc => {
-                const docText = doc.textContent.toLowerCase();
-                const listItem = doc.closest('li');
-                
-                // Remove previous highlights
-                const highlighted = doc.querySelector('.highlight');
-                if (highlighted) {
-                    highlighted.outerHTML = highlighted.innerHTML;
-                }
-                
-                if (searchTerm && docText.includes(searchTerm)) {
-                    listItem.style.display = "flex";
-                    
-                    // Highlight matching text
-                    const regex = new RegExp(searchTerm, 'gi');
-                    doc.innerHTML = doc.textContent.replace(regex, match => 
-                        `<span class="highlight">${match}</span>`);
-                } else if (searchTerm) {
-                    listItem.style.display = "none";
-                } else {
-                    listItem.style.display = "flex";
-                }
-            });
-        });
+        // Automatically update the year
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>

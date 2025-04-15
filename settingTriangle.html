@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Emergency Triangle Placement as a Truck Driver</title>
     <link rel="icon" type="image/png" href="Favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -13,6 +14,7 @@
             padding: 20px;
             background-color: #f4f4f9;
             color: #333;
+            padding-bottom: 80px; /* Space for fixed nav */
         }
         h1, h2, h3 {
             color: #004a7c;
@@ -86,36 +88,116 @@
         .section h2 {
             border-bottom: none;
         }
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+        
+        /* Home Button */
         .home-button {
-    display: block;
-    width: 80px;
-    padding: 8px;
-    text-align: center;
-    background-color: #004a7c;
-    color: #fff;
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background-color: #004a7c;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            z-index: 1001;
+            transition: background-color 0.3s ease;
+        }
+        .home-button:hover {
+            background-color: #0066cc;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background-color: #f9f4f4;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        /* 👇 Add this to remove underline*/
+.bottom-nav a {
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease;
-    
-    /* Fix the button at the bottom left */
-    position: fixed;
-    bottom: 20px;  /* Distance from the bottom */
-    right: 20px;    /* Distance from the left */
-    z-index: 1000;  /* Keeps it above other elements */
+    color: inherit;
 }
-
-.home-button:hover {
-    background-color: #0066cc;
-}
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #555;
+            transition: all 0.3s;
+        }
+        
+        .bottom-nav a:hover .nav-item {
+            color: #3498db;
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+            transition: all 0.3s;
+        }
+        
+        /* Individual icon colors */
+        .nav-item i.fa-house { color: #000000; }
+        .nav-item i.fa-truck-fast { color: #28a745; }
+        .nav-item i.fa-triangle-exclamation { color: #f1c40f; }
+        .nav-item i.fa-screwdriver-wrench { color: #333333; }
+        .nav-item i.fa-phone-flip { color: #3498db; }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-top: 2px solid #ddd;
+            color: black;
+        }
+        
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .languageTitle {
+                font-size: 18pt;
+            }
+            .nav-item {
+                font-size: 10px;
+            }
+            .nav-item i {
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <h1>Master Emergency Triangle Placement as a Truck Driver</h1>
     <p class="languageTitle">Освойте размещение аварийных треугольников как водитель грузовика</p>
-    <!-- Image added at the bottom -->
-    <img src="Triangle.jpg" alt="Emergency Triangle Placement on Hills and Curves" style="display: block; margin: 20px auto; max-width: 100%;">
+    <img src="Triangle.jpg" alt="Emergency Triangle Placement on Hills and Curves">
 
     <div class="section">
         <p>Stopping on a highway or highway shoulder can be dangerous, especially if the road is winding, dark, or has poor visibility due to weather conditions. The more visible you and your truck are during an emergency stop, the safer everyone on the road will be.</p>
@@ -123,7 +205,7 @@
     </div>
 
     <div class="highlight">
-        <p>This is why it’s important for truck drivers to know proper emergency triangle placement. Keep reading to learn about where to place emergency triangles and how to do it safely.</p>
+        <p>This is why it's important for truck drivers to know proper emergency triangle placement. Keep reading to learn about where to place emergency triangles and how to do it safely.</p>
         <p class="language">Вот почему так важно, чтобы водители грузовиков знали, как правильно размещать аварийные треугольники. Читайте дальше, чтобы узнать, где их ставить и как делать это безопасно.</p>
     </div>
 
@@ -169,8 +251,7 @@
             <li>One triangle 100 ft. behind the vehicle in the center of the lane the vehicle occupies.</li>
             <p class="language">Один треугольник на расстоянии 100 футов позади автомобиля, по центру полосы, которую он занимает.</p>
         </ul>
-        <!-- Image added at the bottom -->
-    <img src="first.jpg" alt="Emergency Triangle Placement on Hills and Curves" style="display: block; margin: 20px auto; max-width: 100%;">
+        <img src="first.jpg" alt="Emergency Triangle Placement on Hills and Curves">
     </div>
 
     <div class="section">
@@ -186,14 +267,13 @@
             <li>One triangle 200 ft. behind the vehicle in the center of the lane it occupies.</li>
             <p class="language">Один треугольник на расстоянии 200 футов позади автомобиля, по центру полосы, которую он занимает.</p>
         </ul>
-        <!-- Image added at the bottom -->
-    <img src="second.jpg" alt="Emergency Triangle Placement on Hills and Curves" style="display: block; margin: 20px auto; max-width: 100%;">
+        <img src="second.jpg" alt="Emergency Triangle Placement on Hills and Curves">
     </div>
 
     <div class="section">
         <h2>Obstructed View (Hills and Curves)</h2>
         <p class="language">Ограниченная видимость (холмы и повороты)</p>
-        <p>Getting stopped on a hill or on the side of a road that curves can be especially dangerous, as oncoming motorists’ view is even more obstructed. Due to the increased lack of visibility in these kinds of locations, emergency triangle placement should be a further distance than in other situations.</p>
+        <p>Getting stopped on a hill or on the side of a road that curves can be especially dangerous, as oncoming motorists' view is even more obstructed. Due to the increased lack of visibility in these kinds of locations, emergency triangle placement should be a further distance than in other situations.</p>
         <p class="language">Остановка на холме или на обочине извилистой дороги может быть особенно опасной, так как обзор для встречных водителей еще больше ограничен. Из-за повышенной скрытости в таких местах аварийные треугольники следует размещать на большем расстоянии, чем в других ситуациях.</p>
         <ul>
             <li>If stopped on a two-lane road, place one triangle at least 100 ft. ahead of the vehicle.</li>
@@ -203,29 +283,59 @@
             <li>Move the rearmost triangle between 100 ft. and 500 ft. back down the road to provide ample warning.</li>
             <p class="language">Переместите самый дальний треугольник на расстояние от 100 до 500 футов назад по дороге для обеспечения достаточного предупреждения.</p>
         </ul>
-        <!-- Image added at the bottom -->
-    <img src="third.jpg" alt="Emergency Triangle Placement on Hills and Curves" style="display: block; margin: 20px auto; max-width: 100%;">
+        <img src="third.jpg" alt="Emergency Triangle Placement on Hills and Curves">
     </div>
- <!-- Home Button -->
- <a href="index.html" class="home-button">Home</a>
- <footer style="text-align: center; padding: 15px; background-color: #f8f8f8; border-top: 2px solid #ddd;">
-    <p>
-        <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
-        <br>
-        <span style="font-size: 16px;">All rights reserved.</span>
-    </p>
-    <p style="font-size: 14px;">
-        📜 This website and its contents are protected under applicable copyright laws.  
-        Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
-    </p>
-    <p>
-        📩 Contact us at <a href="mailto:fleet@spacexcarriers.com" style="color: #007bff; text-decoration: none;">fleet@spacexcarriers.com</a>
-    </p>
-</footer>
 
-<script>
-    // Automatically update the year
-    document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    <footer>
+        <p>
+            <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
+            <br>
+            <span style="font-size: 16px;">All rights reserved.</span>
+        </p>
+        <p style="font-size: 14px;">
+            This website and its contents are protected under applicable copyright laws.
+        </p>
+        <p>
+            Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
+        </p>
+    </footer>
+    
+    <nav class="bottom-nav">
+        <a href="home.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </div>
+        </a>
+        <a href="Inspections.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <span>Inspections</span>
+            </div>
+        </a>
+        <a href="safety.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Safety</span>
+            </div>
+        </a>
+        <a href="Address.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <span>Repairs</span>
+            </div>
+        </a>
+        <a href="contacts.html">
+            <div class="nav-item">
+                <i class="fa-solid fa-phone-flip"></i>
+                <span>Contacts</span>
+            </div>
+        </a>
+    </nav>
+
+    <script>
+        // Automatically update the year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

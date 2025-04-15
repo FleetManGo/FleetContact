@@ -162,6 +162,86 @@
         font-size: 13px;
       }
     }
+    .bottom-nav {
+position: fixed;
+bottom: 0;
+width: 100%;
+background-color: #f9f4f4; /* Light gray */
+display: flex;
+justify-content: space-around;
+align-items: center;
+padding: 10px 0;
+box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+z-index: 1000;
+}
+
+.bottom-nav a {
+flex: 1;
+text-align: center;
+color: #555; /* Gray text */
+font-size: 12px;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.bottom-nav a:hover {
+color: #3498db; /* Blue on hover */
+}
+
+.bottom-nav img {
+width: 24px;
+height: 24px;
+filter: grayscale(100%) brightness(50%); /* Makes icons appear gray */
+transition: transform 0.3s, filter 0.3s;
+}
+
+.bottom-nav a:hover img {
+filter: none; /* Show original image color on hover */
+transform: scale(1.2);
+}
+.bottom-nav a {
+flex: 1;
+text-align: center;
+text-decoration: none;
+color: #555; /* Gray text */
+}
+
+.nav-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+font-size: 12px;
+color: #555;
+transition: color 0.3s;
+}
+
+.bottom-nav a:hover .nav-item {
+color: #3498db; /* Blue on hover */
+}
+
+.nav-item i {
+font-size: 20px;
+margin-bottom: 4px;
+}
+.nav-item i.fa-house {
+color: #000000; /* black */
+}
+
+.nav-item i.fa-truck-fast {
+color: #28a745; /* green */
+}
+
+.nav-item i.fa-triangle-exclamation {
+color: #f1c40f; /* yellow */
+}
+
+.nav-item i.fa-screwdriver-wrench {
+color: #333333; /* light black / dark gray */
+}
+
+.nav-item i.fa-phone-flip {
+color: #3498db; /* blue */
+}
   </style>
 </head>
 <body>
@@ -172,6 +252,9 @@
         <div class="safety-text">Safety First - Drive Smart - Stay Alert</div>
     
         <div class="button-container">
+          <a href="breakdownProcedures.html" class="nav-button">Breakdown Procedures - Процедура при поломке грузовика <i class="fa-solid fa-list"></i></a>
+          <a href="settingTriangle.html" class="nav-button">setting road triangle - размещения дорожного треугольника <i class="fa-solid fa-triangle-exclamation"></i></a>
+          <a href="preTrip.html" class="nav-button">Pre Trip Inspection Guide <i class="fa-solid fa-italic"></i></a>
           <a href="mustHave.html" class="nav-button">Must have checklist <i class="fa-solid fa-list"></i></a>
           <a href="IFTA.html" class="nav-button">IFTA REGULATIONS <i class="fa-regular fa-square"></i></a>
           <a href="inspection.html" class="nav-button">PrePass Mobile <i class="fa-solid fa-italic"></i></a>
@@ -180,9 +263,43 @@
         </div>
       </div>
 
-    <!-- Home Button -->
-    <a href="index.html" class="home-button">⬅ Home</a>
+      <nav class="bottom-nav">
 
+        <a href="home.html">
+        <div class="nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+        </div>
+        </a>
+        
+        <a href="Inspections.html">
+        <div class="nav-item">
+        <i class="fa-solid fa-truck-fast"></i>
+        <span>Inspections</span>
+        </div>
+        </a>
+        
+        <a href="safety.html">
+        <div class="nav-item">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Safety</span>
+        </div>
+        </a>
+        
+        <a href="Address.html">
+        <div class="nav-item">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <span>Repairs & Storages</span>
+        </div>
+        </a>
+        
+        <a href="contacts.html">
+        <div class="nav-item">
+        <i class="fa-solid fa-phone-flip"></i>
+        <span>Contacts</span>
+        </div>
+        </a>
+        </nav>
     <!-- Footer -->
     <footer class="footer">
         <p>

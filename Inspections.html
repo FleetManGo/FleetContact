@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceX LTD - Vehicle Inspection Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="Favicon.png">
+    <!-- If using an ICO file -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --dark-blue: #003d7a;
+            --primary-green: #28a745;
+            --dark-green: #1e7e34;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+            --text-color: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .inspection-portal {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .inspection-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            width: 300px;
+            height: 300px;
+            border-radius: 12px;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .inspection-button i {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .inspection-button span {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .inspection-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .inspection-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .inspection-button:hover i {
+            transform: scale(1.1);
+        }
+        
+        .inspection-button:hover::before {
+            opacity: 1;
+        }
+        
+        .blue-button {
+            background-color: var(--primary-blue);
+        }
+        
+        .blue-button:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .green-button {
+            background-color: var(--primary-green);
+        }
+        
+        .green-button:hover {
+            background-color: var(--dark-green);
+        }
+        
+        .support-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        
+        .support-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+        
+        .support-contact {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-method {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+        
+        .contact-method i {
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--dark-gray);
+            color: var(--white);
+            margin-top: auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #aaa;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .inspection-portal {
+                gap: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .inspection-button {
+                width: 100%;
+                max-width: 300px;
+                height: 250px;
+            }
+            
+            .inspection-button i {
+                font-size: 4rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .inspection-button {
+                height: 220px;
+                font-size: 1.3rem;
+            }
+            
+            .support-contact {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+        .bottom-nav {
+position: fixed;
+bottom: 0;
+width: 100%;
+background-color: #f9f4f4; /* Light gray */
+display: flex;
+justify-content: space-around;
+align-items: center;
+padding: 10px 0;
+box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+z-index: 1000;
+}
+
+.bottom-nav a {
+flex: 1;
+text-align: center;
+color: #555; /* Gray text */
+font-size: 12px;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.bottom-nav a:hover {
+color: #3498db; /* Blue on hover */
+}
+
+.bottom-nav img {
+width: 24px;
+height: 24px;
+filter: grayscale(100%) brightness(50%); /* Makes icons appear gray */
+transition: transform 0.3s, filter 0.3s;
+}
+
+.bottom-nav a:hover img {
+filter: none; /* Show original image color on hover */
+transform: scale(1.2);
+}
+.bottom-nav a {
+flex: 1;
+text-align: center;
+text-decoration: none;
+color: #555; /* Gray text */
+}
+
+.nav-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+font-size: 12px;
+color: #555;
+transition: color 0.3s;
+}
+
+.bottom-nav a:hover .nav-item {
+color: #3498db; /* Blue on hover */
+}
+
+.nav-item i {
+font-size: 20px;
+margin-bottom: 4px;
+}
+.nav-item i.fa-house {
+color: #000000; /* black */
+}
+
+.nav-item i.fa-truck-fast {
+color: #28a745; /* green */
+}
+
+.nav-item i.fa-triangle-exclamation {
+color: #f1c40f; /* yellow */
+}
+
+.nav-item i.fa-screwdriver-wrench {
+color: #333333; /* light black / dark gray */
+}
+
+.nav-item i.fa-phone-flip {
+color: #3498db; /* blue */
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-truck-moving"></i>
+                <span class="logo-text">SpaceX LTD</span>
+            </div>
+            <h1>Vehicle Inspection Portal</h1>
+            <p class="subtitle">Select the appropriate inspection form below to document your vehicle's condition and maintenance status</p>
+        </header>
+        
+        <div class="inspection-portal">
+            <button class="inspection-button blue-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/amio0gvi6p/index'">
+                <i class="fa-solid fa-truck"></i>
+                <span>Tractor Inspection</span>
+            </button>
+            
+            <button class="inspection-button green-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/eqdub1sdoq/index'">
+                <i class="fa-solid fa-trailer"></i>
+                <span>Trailer Inspection</span>
+            </button>
+        </div>
+        
+        <div class="support-section">
+            <h3 class="support-title">Need Assistance With Inspections?</h3>
+            <div class="support-contact">
+                <a href="tel:+17733438280" class="contact-method">
+                    <i class="fas fa-phone"></i> (773) 343-8280
+                </a>
+                <a href="mailto:fleet@spacexcarries.com" class="contact-method">
+                    <i class="fas fa-envelope"></i> fleet@spacexcarries.com
+                </a>
+                <a href="https://t.me/Fleet_US" target="_blank" class="contact-method">
+                    <i class="fab fa-telegram"></i> @Fleet_US
+                </a>
+            </div>
+        </div>
+    </div>
+    <nav class="bottom-nav">
+
+        <a href="home.html">
+        <div class="nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+        </div>
+        </a>
+        
+        <a href="Inspections.html">
+        <div class="nav-item">
+        <i class="fa-solid fa-truck-fast"></i>
+        <span>Inspections</span>
+        </div>
+        </a>
+        
+        <a href="safety.html">
+        <div class="nav-item">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Safety</span>
+        </div>
+        </a>
+        
+        <a href="Address.html">
+        <div class="nav-item">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <span>Repairs & Storages</span>
+        </div>
+        </a>
+        
+        <a href="contacts.html">
+        <div class="nav-item">
+        <i class="fa-solid fa-phone-flip"></i>
+        <span>Contacts</span>
+        </div>
+        </a>
+        </nav>
+    <footer>
+        <div class="footer-links">
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Safety Guidelines</a>
+            <a href="#" class="footer-link">Contact Support</a>
+        </div>
+        <p class="copyright">© 2023 SpaceX LTD. All rights reserved.</p>
+    </footer>
+</body>
+</html>

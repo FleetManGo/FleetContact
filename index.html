@@ -1,336 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space_X_LTD</title>
-    <!-- Include FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="Favicon.png">
-    <!-- If using an ICO file -->
-    <link rel="shortcut icon" href="favicon.ico">
-    <style>
-        /* Background styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('RedFRT.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        h1 {
-            text-align: center;
-            margin-top: 25px;
-            color: rgb(187, 13, 22);
-            text-shadow: 
-                -1px -1px 0 rgb(251, 249, 249),  
-                 1px -1px 0 rgb(250, 249, 249),
-                -1px  1px 0 rgb(250, 248, 248),
-                 1px  1px 0 rgb(255, 253, 253);
-        }
-        .admin-button {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .button-container button {
-            width: 80%;
-            max-width: 700px;
-            padding: 15px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            border: none;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-        
-
-        .blue-button { background-color: #ffd000; color: rgb(3, 0, 0); }
-        .green-button { background-color: #ffd000; color: rgb(1, 0, 0); }
-        .orange-button { background-color: #007BFF; color: white; }
-        .red-button { background-color: #007BFF; color: white; }
-        .address-button { background-color: #3b3c3e; color: white; }
-        .safety-button { background-color: #f78a05; color: rgb(4, 4, 4); }
-
-        .button-container button:hover {
-            filter: brightness(1.2);
-        }
-
-        table {
-            width: 90%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-        }
-
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-
-        th { background-color: rgb(7, 50, 194); color: white; }
-
-        @media (max-width: 768px) {
-            table, th, td { font-size: 14px; }
-        }
-        .button-container button i {
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 20px;
-}
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space X LTD - Professional Trucking Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="Favicon.png">
+  <style>
+    :root {
+      --primary-blue: #004a7c;
+      --accent-red: #bb0d16;
+      --dark-gray: #333;
+      --light-gray: #f8f8f8;
+      --white: #ffffff;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .admin-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--dark-gray);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+    
+    .admin-button:hover {
+      background-color: var(--primary-blue);
+      transform: translateY(-2px);
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-blue), #002244);
+      color: var(--white);
+      padding: 40px 20px 60px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .logo i {
+      margin-right: 15px;
+      color: var(--accent-red);
+    }
+    
+    .tagline {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    main {
+      flex: 1;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .quote-container {
+      background-color: var(--white);
+      border-radius: 8px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+      border-left: 5px solid var(--accent-red);
+    }
+    
+    .quote {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--primary-blue);
+      margin-bottom: 15px;
+    }
+    
+    .quote-author {
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .feature-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 15px;
+    }
+    
+    .feature-title {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--primary-blue);
+    }
+    
+    .feature-desc {
+      color: #555;
+    }
+    
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #f9f4f4;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: #555;
+      transition: all 0.3s;
+    }
+    
+    .bottom-nav a:hover .nav-item {
+      color: #3498db;
+    }
+    
+    .nav-item i {
+      font-size: 20px;
+      margin-bottom: 4px;
+      transition: all 0.3s;
+    }
+    
+    /* Individual icon colors */
+    .nav-item i.fa-house { color: #000000; }
+    .nav-item i.fa-truck-fast { color: #28a745; }
+    .nav-item i.fa-triangle-exclamation { color: #f1c40f; }
+    .nav-item i.fa-screwdriver-wrench { color: #333333; }
+    .nav-item i.fa-phone-flip { color: #3498db; }
+    
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: var(--dark-gray);
+      color: var(--white);
+      margin-top: auto;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .footer-link {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-link:hover {
+      color: var(--accent-red);
+    }
+    
+    .copyright {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .tagline {
+        font-size: 1rem;
+      }
+      
+      .quote {
+        font-size: 1.2rem;
+      }
+      
+      .features {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav-item {
+        font-size: 10px;
+      }
+      
+      .nav-item i {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <button class="admin-button" onclick="window.location.href='Admin.html'">Admin</button> 
-    <!-- Font Awsome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-       <!-- Button Container -->
-       <div class="button-container">
-        <button class="orange-button" onclick="window.location.href='breakdownProcedures.html'">Breakdown Procedures - Процедура при поломке грузовика</button>
-        <button class="orange-button" onclick="window.location.href='settingTriangle.html'">setting road triangle - размещения дорожного треугольника</button>
-        <button class="orange-button" onclick="window.location.href='preTrip.html'">Pre Trip Inspection Guide</button>
-        <button class="safety-button" onclick="window.location.href='safety.html'"><i class="fa-solid fa-triangle-exclamation"></i>Safety Info and Tips</button>
-        <button class="blue-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/amio0gvi6p/index'">
-            <i class="fa-solid fa-truck"></i>
-            Tractor Inspection
-        </button>
-        <button class="green-button" onclick="window.location.href='https://fs11.formsite.com/1rRW2S/eqdub1sdoq/index'"><i class="fa-solid fa-trailer"></i>Trailer Inspection</button>
-        <button class="address-button" onclick="window.location.href='Address.html'"><i class="fa-solid fa-screwdriver-wrench"></i>Repair shops and Storages&nbsp; <i class="fa-solid fa-warehouse"></i></button>
+  <button class="admin-button" onclick="window.location.href='Admin.html'">
+    <i class="fas fa-lock"></i> Admin
+  </button>
+
+  <header>
+    <div class="logo">
+      <i class="fas fa-truck-moving"></i>
+      <span>SPACE X LTD</span>
     </div>
+    <p class="tagline">Professional Trucking Solutions - Safety, Reliability, Excellence</p>
+  </header>
 
-    <!-- Fleet Maintenance Contact Info  <i class="fa-solid fa-truck-flatbed"></i> <i class="fa-solid fa-trailer"></i> -->
-    <h1>Fleet Maintenance Contact Info</h1>
-    <!-- Fleet Maintenance Table -->
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Hours</th>
-            <th>Contact</th>
-            <th>Telegram</th>
-            <th>Email</th>
-        </tr>
-        <tr>
-            <td>Sultan K</td>
-            <td>8 AM - 5 PM</td>
-            <td><a href="tel:+17733438280">(773) 343-8280</a></td>
-    <td><a href="https://t.me/Fleet_US" target="_blank">@Fleet_US</a></td>
-    <td><a href="mailto:fleet@spacexcarries.com">fleet@spacexcarries.com</a></td>
-        </tr>
-       <tr>
-            <td>Bakai Fleet</td>
-            <td>10 PM - 8 AM</td>
-            <td><a href="tel:+13126689879">(312) 668-9879</a></td>
-    <td><a href="https://t.me/Fleet_US" target="_blank">@Fleet_US</a></td>
-    <td><a href="mailto:fleet@spacexcarries.com">fleet@spacexcarries.com</a></td>
-        </tr>
-        <tr>
-            <td>Elmar Fleet</td>
-            <td>10 AM - 8 PM</td>
-            <td><a href="tel:+13126689879">(312) 668-9879</a></td>
-    <td><a href="https://t.me/ElmarFleet_Update" target="_blank">@ElmarFleet_Update</a></td>
-    <td><a href="mailto:fleet@spacexcarries.com">fleet@spacexcarries.com</a></td>
-        </tr>
-        <tr>
-            <td>N/A</td>
-            <td></td>
-            <td><a href=""></td>
-                <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>N/A</td>
-            <td></td>
-            <td><a href=""></td>
-                <td></td>
-            <td></td>
-        </tr>
-    </table>
-
-    <!-- Safety Contact Info -->
-    <h1>Safety Contact Info</h1>
-
-    <!-- Safety Contact Table -->
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Hours</th>
-            <th>Contact</th>
-            <th>Telegram</th>
-            <th>Email</th>
-        </tr>
-        <tr>
-            <td>Meka Safety</td>
-            <td>8 AM - 5 PM</td>
-            <td><a href="tel:+17737583896">(773) 758-3896</td>
-                <td><a href="https://t.me/SAFETY_SpaceX" target="_blank">@SAFETY_SpaceX</a></td>
-    <td><a href="mailto:info@spacexcarries.com">info@spacexcarries.com</a></td>
-        </tr>
-        <tr>
-            <td>Ain Safety</td>
-            <td>8 AM - 5 PM</td>
-            <td><a href="tel:+17737583896">(773) 758-3896</td>
-                             <td><a href="https://t.me/SAFETY_SpaceX" target="_blank">@SAFETY_SpaceX</a></td>
-    <td><a href="mailto:info@spacexcarries.com">info@spacexcarries.com</a></td>
-        </tr>
-        <tr>
-            <td>Jordan Safety</td>
-            <td>10 AM - 8 PM</td>
-            <td><a href="tel:+13126689879,101">(312) 668-9879 ext. 101</a></td>
-                             <td><a href="https://t.me/Jordansafety" target="_blank">@Jordansafety</a></td>
-    <td><a href="mailto:info@spacexcarries.com">info@spacexcarries.com</a></td>
-        </tr>
-        <tr>
-            <td>Kai Safety</td>
-            <td>10 AM - 8 PM</td>
-            <td><a href="tel:+13126689879,101">(312) 668-9879 ext. 101</a></td>
-                             <td><a href="https://t.me/Kai_safety" target="_blank">@Kai_safety</a></td>
-    <td><a href="mailto:info@spacexcarries.com">info@spacexcarries.com</a></td>
-        </tr>
-        <tr>
-            <td>N/A</td>
-            <td></td>
-            <td><a href=""></td>
-                <td></td>
-            <td></td>
-        </tr>
-        
-    </table>
-     <!-- Safety Contact Info -->
-     <h1>Accounting Contact Info</h1>
-
-     <!-- Safety Contact Table -->
-     <table>
-         <tr>
-             <th>Name</th>
-             <th>Hours</th>
-             <th>Contact</th>
-             <th>Telegram</th>
-             <th>Email</th>
-         </tr>
-         <tr>
-             <td>Kalyi (truck payment, lease)</td>
-             <td>8 AM - 5 PM</td>
-             <td><a href="tel:+1312447830">(312) 244-7830</a></td>
-    <td><a href="https://t.me/Kalyi_AP" target="_blank">@Kalyi_AP</a></td>
-    <td><a href="mailto:info@spacexcarries.com">info@spacexcarries.com</a></td>
-         </tr>
-         <tr>
-            <td>Giza (Satatement)</td>
-             <td>8 AM - 5 PM</td>
-             <td><a href="tel:+1312447830">(312) 244-7830</a></td>
-                 <td><a href="https://t.me/Gizza008" target="_blank">@Gizza008</a></td>
-    <td><a href="mailto:info@spacexcarries.com">info@spacexcarries.com</a></td>
-         </tr>
-         <tr>
-             <td>Choolpon (Disputes)</td>
-             <td>8 AM - 5 PM</td>
-             <td><a href="tel:+1312447830">(312) 244-7830</a></td>
-                 <td><a href="https://t.me/CholponaKut" target="_blank">@CholponaKut</a></td>
-    <td><a href="mailto:info@spacexcarries.com">info@spacexcarries.com</a></td>
-         </tr>
-         <tr>
-             <td>N/A</td>
-             <td></td>
-             <td><a href=""></td>
-                 <td></td>
-             <td></td>
-         </tr>
-         <tr>
-             <td>N/A</td>
-             <td></td>
-             <td><a href=""></td>
-                 <td></td>
-             <td></td>
-         </tr>
-         
-     </table>
-     <h2 style="text-align: center; color: #f8f8f8;">Office Address</h2>
-     <div style="display: flex; justify-content: center; align-items: center;">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6665.067042795906!2d-88.02709622352728!3d42.0592171712225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880faff651a60f1f%3A0x7be7760ce0d8e048!2s3501%20W%20Algonquin%20Rd%2C%20Rolling%20Meadows%2C%20IL%2060008!5e1!3m2!1sen!2sus!4v1743439750299!5m2!1sen!2sus" 
-            width="1200" 
-            height="450" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+  <main>
+    <div class="quote-container">
+      <p class="quote" id="driver-quote">"Safety isn't expensive, it's priceless. The life you save may be your own."</p>
+      <p class="quote-author" id="quote-author">- Anonymous Trucker</p>
     </div>
-     <footer style="text-align: center; padding: 15px; background-color: #f8f8f8; border-top: 2px solid #ddd;">
-        <p>
-            <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
-            <br>
-            <span style="font-size: 16px;">All rights reserved.</span>
-        </p>
-        <p style="font-size: 14px;">
-            📜 This website and its contents are protected under applicable copyright laws.  
-            Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
-        </p>
-        <p>
-            📩 Contact us at <a href="mailto:fleet@spacexcarriers.com" style="color: #007bff; text-decoration: none;">fleet@spacexcarriers.com</a>
-        </p>
-    </footer>
+    
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="feature-title">Safety First</h3>
+        <p class="feature-desc">Our top priority is ensuring the safety of our drivers and everyone on the road through rigorous training and compliance.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h3 class="feature-title">On-Time Delivery</h3>
+        <p class="feature-desc">Reliable service you can count on with our fleet of well-maintained trucks and experienced drivers.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h3 class="feature-title">24/7 Support</h3>
+        <p class="feature-desc">Our team is always available to assist our drivers with any issues or questions they may have.</p>
+      </div>
+    </div>
+  </main>
 
-    <script>
-        // Automatically update the year
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+  <nav class="bottom-nav">
+    <a href="index.html">
+      <div class="nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </div>
+    </a>
+    <a href="Inspections.html">
+      <div class="nav-item">
+        <i class="fa-solid fa-truck-fast"></i>
+        <span>Inspections</span>
+      </div>
+    </a>
+    <a href="safety.html">
+      <div class="nav-item">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Safety</span>
+      </div>
+    </a>
+    <a href="Address.html">
+      <div class="nav-item">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <span>Repairs</span>
+      </div>
+    </a>
+    <a href="contacts.html">
+      <div class="nav-item">
+        <i class="fa-solid fa-phone-flip"></i>
+        <span>Contacts</span>
+      </div>
+    </a>
+  </nav>
 
-  
-     <script>
-        // Toggle the visibility of the button container with smooth animation
-        function toggleMenu() {
-            const buttonContainer = document.getElementById('button-container');
-    
-            if (buttonContainer.style.display === 'none' || buttonContainer.style.display === '') {
-                buttonContainer.style.display = 'grid'; // Make it visible
-                setTimeout(() => { 
-                    buttonContainer.style.opacity = '1';
-                    buttonContainer.style.transform = 'translateY(0)';
-                }, 10); // Small delay for smooth animation
-            } else {
-                buttonContainer.style.opacity = '0';
-                buttonContainer.style.transform = 'translateY(-20px)';
-                setTimeout(() => {
-                    buttonContainer.style.display = 'none';
-                }, 500); // Hide after animation ends
-            }
-        }
-    
-        // Function to load content
-        function loadContent(page) {
-            if (page === 'breakdown-procedures') {
-                window.location.href = 'breakdownProcedures.html';
-            } else if (page === 'setting-triangle') {
-                window.location.href = 'settingTriangle.html';
-            } else if (page === 'pti-step-by-step') {
-                window.location.href = 'preTrip.html';
-            } else if (page === 'safety-info-tips') {
-                window.location.href = 'safety.html';
-            }
-        }
-    </script>
-    
-   
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="index.html" class="footer-link">About Us</a>
+        <a href="sevices.html" class="footer-link">Services</a>
+        <a href="index.html" class="footer-link">Careers</a>
+        <a href="contacts.html" class="footer-link">Contact Us</a>
+      </div>
+      <p>
+        <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD</span><br>
+        <span style="font-size: 16px;">All rights reserved.</span>
+      </p>
+      <p class="copyright">
+        This website and its contents are protected under applicable copyright laws.<br>
+        Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
+      </p>
+      <p>
+        <a href="mailto:fleet@spacexcarriers.com" class="footer-link">
+          <i class="fas fa-envelope"></i> fleet@spacexcarriers.com
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Automatically update the year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Driver quotes that change every 2 hours
+    const quotes = [
+      {
+        text: "Safety isn't expensive, it's priceless. The life you save may be your own.",
+        author: "Anonymous Trucker"
+      },
+      {
+        text: "The road to success is always under construction. Drive carefully.",
+        author: "Trucking Proverb"
+      },
+      {
+        text: "Good drivers sometimes miss their exit, but bad drivers never miss their turn.",
+        author: "Anonymous"
+      },
+      {
+        text: "Miles are my resume, safety is my reputation.",
+        author: "Professional Driver"
+      },
+      {
+        text: "The best drivers are those who know they still have something to learn.",
+        author: "Veteran Trucker"
+      },
+      {
+        text: "No load is so urgent that we can't take the time to deliver it safely.",
+        author: "Safety First Motto"
+      },
+      {
+        text: "The difference between a good driver and a great driver is attention to detail.",
+        author: "Fleet Manager"
+      }
+    ];
+
+    function updateQuote() {
+      const now = new Date();
+      const hours = now.getHours();
+      const quoteIndex = Math.floor(hours / 2) % quotes.length;
+      
+      document.getElementById('driver-quote').textContent = `"${quotes[quoteIndex].text}"`;
+      document.getElementById('quote-author').textContent = `- ${quotes[quoteIndex].author}`;
+    }
+
+    // Update quote immediately and then every 2 hours
+    updateQuote();
+    setInterval(updateQuote, 2 * 60 * 60 * 1000);
+  </script>
 </body>
 </html>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Driver Safety Message</title>
   <link rel="icon" type="image/png" href="Favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       box-sizing: border-box;
@@ -17,6 +18,7 @@
       color: #333;
       min-height: 100vh;
       overflow-x: hidden;
+      padding-bottom: 80px; /* Space for fixed nav */
     }
     header {
       background: #0055a5;
@@ -84,7 +86,7 @@
     }
     .home-button {
       position: fixed;
-      bottom: 20px;
+      bottom: 100px;
       right: 20px;
       background-color: #212529;
       color: white;
@@ -95,7 +97,7 @@
       font-size: 14px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       transition: background 0.3s ease;
-      z-index: 98;
+      z-index: 1001;
     }
     .home-button:hover {
       background-color: #187bcd;
@@ -113,6 +115,52 @@
       color: #007bff;
       text-decoration: none;
     }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #f9f4f4;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+            /* 👇 Add this to remove underline*/
+.bottom-nav a {
+    text-decoration: none;
+    color: inherit;
+}
+    
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: #555;
+      transition: all 0.3s;
+    }
+    
+    .bottom-nav a:hover .nav-item {
+      color: #3498db;
+    }
+    
+    .nav-item i {
+      font-size: 20px;
+      margin-bottom: 4px;
+      transition: all 0.3s;
+    }
+    
+    /* Individual icon colors */
+    .nav-item i.fa-house { color: #000000; }
+    .nav-item i.fa-truck-fast { color: #28a745; }
+    .nav-item i.fa-triangle-exclamation { color: #f1c40f; }
+    .nav-item i.fa-screwdriver-wrench { color: #333333; }
+    .nav-item i.fa-phone-flip { color: #3498db; }
 
     @media (max-width: 768px) {
       .tab {
@@ -141,6 +189,12 @@
       .home-button {
         padding: 7px 12px;
         font-size: 12px;
+      }
+      .nav-item {
+        font-size: 10px;
+      }
+      .nav-item i {
+        font-size: 18px;
       }
     }
   </style>
@@ -244,7 +298,6 @@
       <p><strong>Сиздин коопсуздугуңуз — биздин артыкчылыгыбыз. Акыл менен айдаңыз, эрежелерди сактаңыз жана аман-эсен үйгө келиңиз! 💪🛣</strong></p>
     </div>
   </div>
-  <a href="safety.html" class="home-button">Back To Safety</a>
 
   <footer class="footer">
     <p>&copy; <span id="year"></span> SPACE X LTD<br>All rights reserved.</p>
@@ -256,6 +309,39 @@
       📩 Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
     </p>
   </footer>
+  
+  <nav class="bottom-nav">
+    <a href="home.html">
+      <div class="nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </div>
+    </a>
+    <a href="Inspections.html">
+      <div class="nav-item">
+        <i class="fa-solid fa-truck-fast"></i>
+        <span>Inspections</span>
+      </div>
+    </a>
+    <a href="safety.html">
+      <div class="nav-item">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Safety</span>
+      </div>
+    </a>
+    <a href="Address.html">
+      <div class="nav-item">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <span>Repairs</span>
+      </div>
+    </a>
+    <a href="contacts.html">
+      <div class="nav-item">
+        <i class="fa-solid fa-phone-flip"></i>
+        <span>Contacts</span>
+      </div>
+    </a>
+  </nav>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();

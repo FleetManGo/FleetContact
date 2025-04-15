@@ -113,6 +113,97 @@
         font-size: 13px;
       }
     }
+    .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-top: 2px solid #ddd;
+        }
+        .footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+    .bottom-nav {
+position: fixed;
+bottom: 0;
+width: 100%;
+background-color: #f9f4f4; /* Light gray */
+display: flex;
+justify-content: space-around;
+align-items: center;
+padding: 10px 0;
+box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+z-index: 1000;
+}
+
+.bottom-nav a {
+flex: 1;
+text-align: center;
+color: #555; /* Gray text */
+font-size: 12px;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.bottom-nav a:hover {
+color: #3498db; /* Blue on hover */
+}
+
+.bottom-nav img {
+width: 24px;
+height: 24px;
+filter: grayscale(100%) brightness(50%); /* Makes icons appear gray */
+transition: transform 0.3s, filter 0.3s;
+}
+
+.bottom-nav a:hover img {
+filter: none; /* Show original image color on hover */
+transform: scale(1.2);
+}
+.bottom-nav a {
+flex: 1;
+text-align: center;
+text-decoration: none;
+color: #555; /* Gray text */
+}
+
+.nav-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+font-size: 12px;
+color: #555;
+transition: color 0.3s;
+}
+
+.bottom-nav a:hover .nav-item {
+color: #3498db; /* Blue on hover */
+}
+
+.nav-item i {
+font-size: 20px;
+margin-bottom: 4px;
+}
+.nav-item i.fa-house {
+color: #000000; /* black */
+}
+
+.nav-item i.fa-truck-fast {
+color: #28a745; /* green */
+}
+
+.nav-item i.fa-triangle-exclamation {
+color: #f1c40f; /* yellow */
+}
+
+.nav-item i.fa-screwdriver-wrench {
+color: #333333; /* light black / dark gray */
+}
+
+.nav-item i.fa-phone-flip {
+color: #3498db; /* blue */
+}
   </style>
 </head>
 <body>
@@ -260,8 +351,58 @@
       <p style="margin-top: 25px; font-weight: bold;">Сохраняйте спокойствие, следуйте инструкциям и думайте о безопасности! 🚛📋</p>
     </div>
   </div>
+ 
+  <footer class="footer">
+    <p>
+        <span style="font-size: 18px;">&copy; <span id="year"></span> SPACE X LTD </span>  
+        <br>
+        <span style="font-size: 16px;">All rights reserved.</span>
+    </p>
+    <p style="font-size: 14px;">
+        📜 This website and its contents are protected under applicable copyright laws.  
+        Unauthorized reproduction, distribution, or modification without permission is strictly prohibited.
+    </p>
+    <p>
+        📩 Contact us at <a href="mailto:fleet@spacexcarriers.com">fleet@spacexcarriers.com</a>
+    </p>
+</footer>
+  <nav class="bottom-nav">
 
-  <a href="safety.html" class="back-button">⬅ Back to Safety</a>
+    <a href="home.html">
+    <div class="nav-item">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+    </div>
+    </a>
+    
+    <a href="Inspections.html">
+    <div class="nav-item">
+    <i class="fa-solid fa-truck-fast"></i>
+    <span>Inspections</span>
+    </div>
+    </a>
+    
+    <a href="safety.html">
+    <div class="nav-item">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span>Safety</span>
+    </div>
+    </a>
+    
+    <a href="Address.html">
+    <div class="nav-item">
+    <i class="fa-solid fa-screwdriver-wrench"></i>
+    <span>Repairs & Storages</span>
+    </div>
+    </a>
+    
+    <a href="contacts.html">
+    <div class="nav-item">
+    <i class="fa-solid fa-phone-flip"></i>
+    <span>Contacts</span>
+    </div>
+    </a>
+    </nav>
 
   <script>
     function toggleLanguage() {
