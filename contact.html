@@ -154,6 +154,11 @@
             color: var(--secondary-color);
         }
         
+        .badge-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
         footer {
             text-align: center;
             margin-top: 40px;
@@ -173,56 +178,63 @@
             }
         }
         .bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #f8f9fa; /* Light gray */
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px 0;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-  z-index: 1000;
-}
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
 
-.bottom-nav a {
-  flex: 1;
-  text-align: center;
-  color: #555; /* Gray text */
-  text-decoration: none;
-  transition: all 0.3s;
-}
+        .bottom-nav a {
+            flex: 1;
+            text-align: center;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
 
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px;
-  color: #0056b3; /* Blue color to match your theme */
-}
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #0056b3;
+        }
 
-.bottom-nav a:hover .nav-item {
-  color: #ff7e00; /* Orange accent color on hover */
-}
+        .bottom-nav a:hover .nav-item {
+            color: #ff7e00;
+        }
 
-.nav-item i {
-  font-size: 20px;
-  margin-bottom: 4px;
-  color: #0056b3; /* Blue color to match your theme */
-}
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+            color: #0056b3;
+        }
 
-.bottom-nav a:hover .nav-item i {
-  color: #ff7e00; /* Orange accent color on hover */
-} 
-  /* Individual icon colors */
-  .nav-item i.fa-house { color: #000000; }
-    .nav-item i.fa-truck-fast { color: #28a745; }
-    .nav-item i.fa-triangle-exclamation { color: #f1c40f; }
-    .nav-item i.fa-screwdriver-wrench { color: #333333; }
-    .nav-item i.fa-phone-flip { color: #3498db; }
-    
-</style>
+        .bottom-nav a:hover .nav-item i {
+            color: #ff7e00;
+        } 
+        
+        /* Individual icon colors */
+        .nav-item i.fa-house { color: #000000; }
+        .nav-item i.fa-truck-fast { color: #28a745; }
+        .nav-item i.fa-triangle-exclamation { color: #f1c40f; }
+        .nav-item i.fa-screwdriver-wrench { color: #333333; }
+        .nav-item i.fa-phone-flip { color: #3498db; }
+        
+        .time-display {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -235,6 +247,10 @@
                 <span><i class="fas fa-phone-alt"></i> Emergency: (312) 668-9879</span>
             </div>
         </header>
+        
+        <div class="time-display">
+            Current CDT Time: <span id="current-time"></span>
+        </div>
 
         <!-- Fleet Maintenance Contact Info -->
         <div class="contact-section">
@@ -256,21 +272,21 @@
                 <tbody>
                     <tr>
                         <td>Sultan K <span class="badge badge-primary">Primary</span></td>
-                        <td>8 AM - 5 PM <span class="badge badge-success">Available</span></td>
+                        <td>8 AM - 5 PM <span class="badge availability-badge" data-hours="8-17"></span></td>
                         <td><a href="tel:+17733438280" class="contact-method"><i class="fas fa-phone"></i> (773) 343-8280</a></td>
                         <td><a href="https://t.me/Fleet_US" target="_blank" class="contact-method"><i class="fab fa-telegram"></i> @Fleet_US</a></td>
                         <td><a href="mailto:fleet@spacexcarries.com" class="contact-method"><i class="fas fa-envelope"></i> fleet@spacexcarries.com</a></td>
                     </tr>
                     <tr>
                         <td>Bakai Fleet <span class="badge badge-warning">Night Shift</span></td>
-                        <td>10 PM - 8 AM</td>
+                        <td>10 PM - 8 AM <span class="badge availability-badge" data-hours="22-8"></span></td>
                         <td><a href="tel:+13126689879" class="contact-method"><i class="fas fa-phone"></i> (312) 668-9879</a></td>
                         <td><a href="https://t.me/Fleet_US" target="_blank" class="contact-method"><i class="fab fa-telegram"></i> @Fleet_US</a></td>
                         <td><a href="mailto:fleet@spacexcarries.com" class="contact-method"><i class="fas fa-envelope"></i> fleet@spacexcarries.com</a></td>
                     </tr>
                     <tr>
                         <td>Elmar Fleet</td>
-                        <td>10 AM - 8 PM</td>
+                        <td>10 AM - 8 PM <span class="badge availability-badge" data-hours="10-20"></span></td>
                         <td><a href="tel:+13126689879" class="contact-method"><i class="fas fa-phone"></i> (312) 668-9879</a></td>
                         <td><a href="https://t.me/ElmarFleet_Update" target="_blank" class="contact-method"><i class="fab fa-telegram"></i> @ElmarFleet_Update</a></td>
                         <td><a href="mailto:fleet@spacexcarries.com" class="contact-method"><i class="fas fa-envelope"></i> fleet@spacexcarries.com</a></td>
@@ -299,28 +315,28 @@
                 <tbody>
                     <tr>
                         <td>Meka Safety <span class="badge badge-primary">Primary</span></td>
-                        <td>8 AM - 5 PM <span class="badge badge-success">Available</span></td>
+                        <td>8 AM - 5 PM <span class="badge availability-badge" data-hours="8-17"></span></td>
                         <td><a href="tel:+17737583896" class="contact-method"><i class="fas fa-phone"></i> (773) 758-3896</a></td>
                         <td><a href="https://t.me/SAFETY_SpaceX" target="_blank" class="contact-method"><i class="fab fa-telegram"></i> @SAFETY_SpaceX</a></td>
                         <td><a href="mailto:info@spacexcarries.com" class="contact-method"><i class="fas fa-envelope"></i> info@spacexcarries.com</a></td>
                     </tr>
                     <tr>
                         <td>Ain Safety</td>
-                        <td>8 AM - 5 PM</td>
+                        <td>8 AM - 5 PM <span class="badge availability-badge" data-hours="8-17"></span></td>
                         <td><a href="tel:+17737583896" class="contact-method"><i class="fas fa-phone"></i> (773) 758-3896</a></td>
                         <td><a href="https://t.me/SAFETY_SpaceX" target="_blank" class="contact-method"><i class="fab fa-telegram"></i> @SAFETY_SpaceX</a></td>
                         <td><a href="mailto:info@spacexcarries.com" class="contact-method"><i class="fas fa-envelope"></i> info@spacexcarries.com</a></td>
                     </tr>
                     <tr>
                         <td>Jordan Safety</td>
-                        <td>10 AM - 8 PM</td>
+                        <td>10 AM - 8 PM <span class="badge availability-badge" data-hours="10-20"></span></td>
                         <td><a href="tel:+13126689879,101" class="contact-method"><i class="fas fa-phone"></i> (312) 668-9879 ext. 101</a></td>
                         <td><a href="https://t.me/Jordansafety" target="_blank" class="contact-method"><i class="fab fa-telegram"></i> @Jordansafety</a></td>
                         <td><a href="mailto:info@spacexcarries.com" class="contact-method"><i class="fas fa-envelope"></i> info@spacexcarries.com</a></td>
                     </tr>
                     <tr>
                         <td>Kai Safety</td>
-                        <td>10 AM - 8 PM</td>
+                        <td>10 AM - 8 PM <span class="badge availability-badge" data-hours="10-20"></span></td>
                         <td><a href="tel:+13126689879,101" class="contact-method"><i class="fas fa-phone"></i> (312) 668-9879 ext. 101</a></td>
                         <td><a href="https://t.me/Kai_safety" target="_blank" class="contact-method"><i class="fab fa-telegram"></i> @Kai_safety</a></td>
                         <td><a href="mailto:info@spacexcarries.com" class="contact-method"><i class="fas fa-envelope"></i> info@spacexcarries.com</a></td>
@@ -349,21 +365,21 @@
                 <tbody>
                     <tr>
                         <td>Kalyi (truck payment, lease) <span class="badge badge-primary">Primary</span></td>
-                        <td>8 AM - 5 PM <span class="badge badge-success">Available</span></td>
+                        <td>8 AM - 5 PM <span class="badge availability-badge" data-hours="8-17"></span></td>
                         <td><a href="tel:+1312447830" class="contact-method"><i class="fas fa-phone"></i> (312) 244-7830</a></td>
                         <td><a href="https://t.me/Kalyi_AP" target="_blank" class="contact-method"><i class="fab fa-telegram"></i> @Kalyi_AP</a></td>
                         <td><a href="mailto:info@spacexcarries.com" class="contact-method"><i class="fas fa-envelope"></i> info@spacexcarries.com</a></td>
                     </tr>
                     <tr>
                         <td>Giza (Statement)</td>
-                        <td>8 AM - 5 PM</td>
+                        <td>8 AM - 5 PM <span class="badge availability-badge" data-hours="8-17"></span></td>
                         <td><a href="tel:+1312447830" class="contact-method"><i class="fas fa-phone"></i> (312) 244-7830</a></td>
                         <td><a href="https://t.me/Gizza008" target="_blank" class="contact-method"><i class="fab fa-telegram"></i> @Gizza008</a></td>
                         <td><a href="mailto:info@spacexcarries.com" class="contact-method"><i class="fas fa-envelope"></i> info@spacexcarries.com</a></td>
                     </tr>
                     <tr>
                         <td>Choolpon (Disputes)</td>
-                        <td>8 AM - 5 PM</td>
+                        <td>8 AM - 5 PM <span class="badge availability-badge" data-hours="8-17"></span></td>
                         <td><a href="tel:+1312447830" class="contact-method"><i class="fas fa-phone"></i> (312) 244-7830</a></td>
                         <td><a href="https://t.me/CholponaKut" target="_blank" class="contact-method"><i class="fab fa-telegram"></i> @CholponaKut</a></td>
                         <td><a href="mailto:info@spacexcarries.com" class="contact-method"><i class="fas fa-envelope"></i> info@spacexcarries.com</a></td>
@@ -413,5 +429,70 @@
             <p>For immediate assistance, please contact the appropriate department during business hours.</p>
         </footer>
     </div>
+    
+    <script>
+        // Function to get current CDT time
+        function getCurrentCDTTime() {
+            const options = {
+                timeZone: 'America/Chicago',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            return new Date().toLocaleTimeString('en-US', options);
+        }
+        
+        // Function to check if current time is within working hours
+        function isWithinHours(startHour, endHour) {
+            const now = new Date();
+            const cdtOptions = { timeZone: 'America/Chicago' };
+            const cdtHours = now.toLocaleString('en-US', { hour: 'numeric', hour12: false, ...cdtOptions });
+            const currentHour = parseInt(cdtHours);
+            
+            // Handle overnight shifts (like 10 PM to 8 AM)
+            if (startHour > endHour) {
+                return currentHour >= startHour || currentHour < endHour;
+            } else {
+                return currentHour >= startHour && currentHour < endHour;
+            }
+        }
+        
+        // Update all availability badges
+        function updateAvailabilityBadges() {
+            const badges = document.querySelectorAll('.availability-badge');
+            
+            badges.forEach(badge => {
+                const hours = badge.getAttribute('data-hours').split('-');
+                const startHour = parseInt(hours[0]);
+                const endHour = parseInt(hours[1]);
+                
+                if (isWithinHours(startHour, endHour)) {
+                    badge.textContent = 'Available';
+                    badge.className = 'badge badge-success';
+                } else {
+                    badge.textContent = 'Not Available';
+                    badge.className = 'badge badge-danger';
+                }
+            });
+        }
+        
+        // Update time display
+        function updateTimeDisplay() {
+            document.getElementById('current-time').textContent = getCurrentCDTTime();
+        }
+        
+        // Initialize and update every minute
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTimeDisplay();
+            updateAvailabilityBadges();
+            
+            // Update every minute
+            setInterval(() => {
+                updateTimeDisplay();
+                updateAvailabilityBadges();
+            }, 60000);
+        });
+    </script>
 </body>
 </html>
