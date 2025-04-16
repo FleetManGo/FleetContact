@@ -175,8 +175,9 @@
         .bottom-nav {
   position: fixed;
   bottom: 0;
-  width: 100%;
-  background-color: #f9f4f4; /* Light gray */
+  left: 0;
+  right: 0;
+  background-color: #f8f9fa; /* Light gray */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -189,31 +190,8 @@
   flex: 1;
   text-align: center;
   color: #555; /* Gray text */
-  font-size: 12px;
   text-decoration: none;
-  transition: color 0.3s;
-}
-
-.bottom-nav a:hover {
-  color: #3498db; /* Blue on hover */
-}
-
-.bottom-nav img {
-  width: 24px;
-  height: 24px;
-  filter: grayscale(100%) brightness(50%); /* Makes icons appear gray */
-  transition: transform 0.3s, filter 0.3s;
-}
-
-.bottom-nav a:hover img {
-  filter: none; /* Show original image color on hover */
-  transform: scale(1.2);
-}
-.bottom-nav a {
-  flex: 1;
-  text-align: center;
-  text-decoration: none;
-  color: #555; /* Gray text */
+  transition: all 0.3s;
 }
 
 .nav-item {
@@ -221,19 +199,22 @@
   flex-direction: column;
   align-items: center;
   font-size: 12px;
-  color: #555;
-  transition: color 0.3s;
+  color: #0056b3; /* Blue color to match your theme */
 }
 
 .bottom-nav a:hover .nav-item {
-  color: #3498db; /* Blue on hover */
+  color: #ff7e00; /* Orange accent color on hover */
 }
 
 .nav-item i {
   font-size: 20px;
   margin-bottom: 4px;
+  color: #0056b3; /* Blue color to match your theme */
 }
-    </style>
+
+.bottom-nav a:hover .nav-item i {
+  color: #ff7e00; /* Orange accent color on hover */
+} </style>
 </head>
 <body>
     <div class="container">
@@ -383,44 +364,41 @@
             </table>
         </div>
         <nav class="bottom-nav">
-
             <a href="index.html">
                 <div class="nav-item">
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
-            </div>
-          </a>
-    
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </div>
+            </a>
+            
             <a href="Inspections.html">
                 <div class="nav-item">
                     <i class="fa-solid fa-truck-fast"></i>
                     <span>Inspections</span>
-                  </div>
-                </a>
-    
+                </div>
+            </a>
+            
             <a href="safety.html">
                 <div class="nav-item">
-                  <i class="fa-solid fa-triangle-exclamation"></i>
-                  <span>Safety</span>
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>Safety</span>
                 </div>
-              </a>
-    
-           
-    
+            </a>
+            
             <a href="Address.html">
                 <div class="nav-item">
-                  <i class="fa-solid fa-screwdriver-wrench"></i>
-                  <span>Repairs & Storages</span>
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <span>Repairs & Storages</span>
                 </div>
-              </a>
-    
-              <a href="contact.html">
+            </a>
+            
+            <a href="contact.html">
                 <div class="nav-item">
                     <i class="fa-solid fa-phone-flip"></i>
                     <span>Contacts</span>
-                  </div>
-                </a>
-          </nav>
+                </div>
+            </a>
+        </nav>
 
         <footer>
             <p>&copy; 2023 SpaceX Carries. All rights reserved.</p>
