@@ -3,142 +3,375 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Login</title>
-  <link rel="icon" type="image/png" href="Favicon.png">
+  <title>Fleet Management Portal | Login</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <style>
+    :root {
+      --primary: #3498db;
+      --primary-dark: #2980b9;
+      --secondary: #2c3e50;
+      --accent: #1abc9c;
+      --text: #ecf0f1;
+      --text-secondary: #bdc3c7;
+      --bg-dark: #121a24;
+      --bg-darker: #0d121b;
+      --card-bg: #1a2433;
+      --border: #2c3e50;
+      --error: #e74c3c;
+      --success: #2ecc71;
+    }
+    
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+      color: var(--text);
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       margin: 0;
     }
-    .container {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem 3rem;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      text-align: center;
-    }
-    .narrow {
-      max-width: 300px;
+    
+    .login-container {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       width: 100%;
+      max-width: 400px;
+      border: 1px solid var(--border);
     }
-    .wide {
-      width: 100vw;
-      height: 100vh;
+    
+    .logo {
+      text-align: center;
+      margin-bottom: 1rem;
+      height: 60px; /* Fixed height for logo container */
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
+    
+    .logo img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain; /* Ensures whole image is visible and maintains aspect ratio */
+      filter: brightness(0) invert(1);
+    }
+    
     h1 {
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    .form-group {
       margin-bottom: 1.5rem;
     }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      font-size: 14px;
+    }
+    
+    input[type="text"],
     input[type="password"] {
-      padding: 0.5rem;
-      border: none;
-      border-radius: 6px;
       width: 100%;
-      margin-bottom: 1rem;
-      font-size: 1rem;
+      padding: 12px 15px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 15px;
+      transition: all 0.3s;
+      color: var(--text);
     }
+    
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
     button {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 6px;
-      background-color: #00bcd4;
+      width: 100%;
+      padding: 12px;
+      background-color: var(--primary);
       color: white;
-      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 500;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s;
+      letter-spacing: 0.5px;
     }
+    
     button:hover {
-      background-color: #0097a7;
+      background-color: var(--primary-dark);
+      transform: translateY(-1px);
     }
+    
+    .error-message {
+      color: var(--error);
+      margin-top: 1rem;
+      text-align: center;
+      display: none;
+      font-size: 14px;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+    
     .hidden {
       display: none;
     }
-    .gif-container {
-      margin-top: 20px;
-    }
-
-    .gif-container img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-
-    .game {
-      padding: 12px 25px;
-      font-size: 16px;
-      background-color: #ff4081;
-      color: white;
-      border: none;
+    
+    /* Dashboard styles */
+    .dashboard-container {
+      width: 100%;
+      max-width: 1200px;
+      background: var(--card-bg);
       border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: background 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      padding: 2rem;
+      border: 1px solid var(--border);
     }
-
-    .game:hover {
-      background-color: #e91e63;
+    
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .dashboard-nav {
+      display: flex;
+      gap: 0.8rem;
+    }
+    
+    .dashboard-nav button {
+      width: auto;
+      padding: 0.6rem 1.2rem;
+      background: var(--secondary);
+      color: var(--text-secondary);
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    
+    .dashboard-nav button:hover {
+      background: var(--primary);
+      color: white;
+      transform: none;
+    }
+    
+    .dashboard-content {
+      min-height: 400px;
+      color: var(--text-secondary);
+    }
+    
+    .section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .section.active {
+      display: block;
+    }
+    
+    .section h2 {
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    
+    .section p {
+      line-height: 1.6;
+    }
+    
+    /* Status indicator */
+    .status {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    
+    .status-active {
+      background: var(--success);
+      box-shadow: 0 0 10px var(--success);
+    }
+    
+    .status-inactive {
+      background: var(--error);
     }
   </style>
 </head>
 <body>
-    <div class="container narrow" id="loginBox">
-        <h1>Admin Access</h1>
-        <form onsubmit="checkPassword(); return false;">
-          <input type="password" id="password" placeholder="Enter Password" required autofocus />
-          <button type="submit">Enter</button>
-        </form>
-        <p id="errorMsg" style="color: #f88; display: none; margin-top: 1rem;">
-          Incorrect password
-        </p>
+  <!-- Login Screen -->
+  <div class="login-container" id="loginScreen">
+    <div class="logo">
+      <img src="Images/Screenshot 2025-03-12 at 4.02.44 PM.png" alt="Fleet Management Logo">
+    </div>
+    <h1>Admin Portal Login</h1>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" required>
       </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p class="error-message" id="errorMessage">Invalid username or password</p>
+    <div class="footer">
+      <p>Fleet Management System v1.0</p>
+    </div>
+  </div>
 
-  <div class="container wide hidden" id="welcomeBox">
-    <h1>Need a Laugh?</h1>
-    <button class="game" onclick="showSurprise()">Dont click this button</button>
-  
-    <div class="gif-container" id="gifContainer"></div>
-  
+  <!-- Dashboard Screen (hidden initially) -->
+  <div class="dashboard-container hidden" id="dashboardScreen">
+    <div class="dashboard-header">
+      <h1>Fleet Management Dashboard</h1>
+      <div class="dashboard-nav">
+        <button onclick="showSection('overview')">Overview</button>
+        <button onclick="showSection('vehicles')">Vehicles</button>
+        <button onclick="showSection('maintenance')">Maintenance</button>
+        <button onclick="showSection('drivers')">Drivers</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+    
+    <div class="dashboard-content">
+      <div id="overview" class="section active">
+        <h2>Fleet Overview</h2>
+        <p>Welcome to your fleet management dashboard. Here you can monitor and manage your entire fleet.</p>
+        <div style="margin-top: 2rem; background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 6px; border: 1px solid var(--border);">
+          <h3 style="margin-top: 0; color: var(--text);">System Status</h3>
+          <p><span class="status status-active"></span> All systems operational</p>
+          <p><span class="status status-active"></span> Database connection active</p>
+          <p><span class="status status-active"></span> 24/7 monitoring enabled</p>
+        </div>
+      </div>
+      
+      <div id="vehicles" class="section">
+        <h2>Vehicle Management</h2>
+        <p>Manage your fleet vehicles, registrations, and specifications. This section will display:</p>
+        <ul>
+          <li>Complete vehicle inventory</li>
+          <li>Registration and inspection status</li>
+          <li>Vehicle utilization metrics</li>
+        </ul>
+      </div>
+      
+      <div id="maintenance" class="section">
+        <h2>Maintenance Scheduling</h2>
+        <p>Track and schedule maintenance for your fleet vehicles. Future features include:</p>
+        <ul>
+          <li>Preventive maintenance schedules</li>
+          <li>Service history tracking</li>
+          <li>Maintenance cost analysis</li>
+        </ul>
+      </div>
+      
+      <div id="drivers" class="section">
+        <h2>Driver Management</h2>
+        <p>Manage driver information, assignments, and certifications. Coming soon:</p>
+        <ul>
+          <li>Driver performance metrics</li>
+          <li>Certification tracking</li>
+          <li>Shift scheduling</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <script>
-    const correctPassword = "admin123"; // Change this to your desired password
-
-    function checkPassword() {
-      const input = document.getElementById("password").value;
-      const errorMsg = document.getElementById("errorMsg");
-      if (input === correctPassword) {
-        document.getElementById("loginBox").classList.add("hidden");
-        document.getElementById("welcomeBox").classList.remove("hidden");
-      } else {
-        errorMsg.style.display = "block";
-      }
-    }
-  </script>
-  <script>
-    window.onload = () => {
-      document.getElementById("password").focus();
+    // Simple authentication (in production, use proper backend authentication)
+    const ADMIN_CREDENTIALS = {
+      username: "admin",
+      password: "fleet123" // Change this to a secure password
     };
-  </script>
-   <script>
-    const gifs = [
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG1hOHE5cjk4OXFuN29rMHgzcXNkcmlpN2h1OGt0NHA0dG5kbHNodCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/X4YqmJEl6wJoY/giphy.gif",
-     
-    ];
-
-    function showSurprise() {
-      const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
-      document.getElementById("gifContainer").innerHTML = `<img src="${randomGif}" alt="Funny GIF">`;
+    
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('errorMessage');
+      
+      if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+        // Successful login
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('dashboardScreen').classList.remove('hidden');
+        errorMessage.style.display = 'none';
+      } else {
+        // Failed login
+        errorMessage.style.display = 'block';
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+      }
+    });
+    
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show selected section
+      document.getElementById(sectionId).classList.add('active');
+      
+      // Update active button state
+      document.querySelectorAll('.dashboard-nav button').forEach(btn => {
+        btn.style.background = btn.textContent.toLowerCase().includes(sectionId) 
+          ? 'var(--primary)' 
+          : 'var(--secondary)';
+        btn.style.color = btn.textContent.toLowerCase().includes(sectionId) 
+          ? 'white' 
+          : 'var(--text-secondary)';
+      });
     }
+    
+    function logout() {
+      document.getElementById('dashboardScreen').classList.add('hidden');
+      document.getElementById('loginScreen').classList.remove('hidden');
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+      document.getElementById('username').focus();
+      
+      // Reset button states
+      document.querySelectorAll('.dashboard-nav button').forEach(btn => {
+        btn.style.background = 'var(--secondary)';
+        btn.style.color = 'var(--text-secondary)';
+      });
+    }
+    
+    // Focus username field on page load
+    window.onload = function() {
+      document.getElementById('username').focus();
+    };
   </script>
 </body>
 </html>
