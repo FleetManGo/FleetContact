@@ -33,6 +33,21 @@
 <body>
   <div class="container">
     <h1>Form Results</h1>
+    <input id="nameInput" type="text" placeholder="Your name">
+<button onclick="saveInput()">Save</button>
+
+<script>
+  function saveInput() {
+    const name = document.getElementById('nameInput').value;
+    localStorage.setItem('savedName', name);
+  }
+
+  // Load saved input on page load
+  window.onload = () => {
+    const saved = localStorage.getItem('savedName');
+    if (saved) document.getElementById('nameInput').value = saved;
+  };
+</script>
     <a name="form357719526" id="formAnchor357719526"></a>
     <script src="https://fs11.formsite.com/include/form/embedManager.js?357719526"></script>
     <script>
