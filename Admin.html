@@ -1,450 +1,863 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fleet Management Portal | Login</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <style>
-    :root {
-      --primary: #3498db;
-      --primary-dark: #2980b9;
-      --secondary: #2c3e50;
-      --accent: #1abc9c;
-      --text: #ecf0f1;
-      --text-secondary: #bdc3c7;
-      --bg-dark: #121a24;
-      --bg-darker: #0d121b;
-      --card-bg: #1a2433;
-      --border: #2c3e50;
-      --error: #e74c3c;
-      --success: #2ecc71;
-    }
-    
-    body {
-      background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
-      color: var(--text);
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-    }
-    
-    .login-container {
-      background: var(--card-bg);
-      padding: 2.5rem;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      width: 100%;
-      max-width: 400px;
-      border: 1px solid var(--border);
-    }
-    
-    .logo {
-      text-align: center;
-      margin-bottom: 1rem;
-      height: 60px; /* Fixed height for logo container */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .logo img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  /* filter: brightness(0) invert(1); */ /* Remove or comment this */
-}
-    
-    h1 {
-      color: var(--text);
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-    
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--text-secondary);
-      font-weight: 400;
-      font-size: 14px;
-    }
-    
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px 15px;
-      background: rgba(0, 0, 0, 0.2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      font-size: 15px;
-      transition: all 0.3s;
-      color: var(--text);
-    }
-    
-    input[type="text"]:focus,
-    input[type="password"]:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-      background: rgba(0, 0, 0, 0.3);
-    }
-    
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s;
-      letter-spacing: 0.5px;
-    }
-    
-    button:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-1px);
-    }
-    
-    .error-message {
-      color: var(--error);
-      margin-top: 1rem;
-      text-align: center;
-      display: none;
-      font-size: 14px;
-    }
-    
-    .footer {
-      text-align: center;
-      margin-top: 2rem;
-      color: var(--text-secondary);
-      font-size: 13px;
-    }
-    
-    .hidden {
-      display: none;
-    }
-    
-    /* Dashboard styles */
-    .dashboard-container {
-      width: 100%;
-      max-width: 1200px;
-      background: var(--card-bg);
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      padding: 2rem;
-      border: 1px solid var(--border);
-    }
-    
-    .dashboard-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-    
-    .dashboard-nav {
-      display: flex;
-      gap: 0.8rem;
-    }
-    
-    .dashboard-nav button {
-      width: auto;
-      padding: 0.6rem 1.2rem;
-      background: var(--secondary);
-      color: var(--text-secondary);
-      font-size: 14px;
-      transition: all 0.2s;
-    }
-    
-    .dashboard-nav button:hover {
-      background: var(--primary);
-      color: white;
-      transform: none;
-    }
-    
-    .dashboard-content {
-      min-height: 400px;
-      color: var(--text-secondary);
-    }
-    
-    .section {
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .section.active {
-      display: block;
-    }
-    
-    .section h2 {
-      color: var(--text);
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-    }
-    
-    .section p {
-      line-height: 1.6;
-    }
-    
-    /* Status indicator */
-    .status {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-    
-    .status-active {
-      background: var(--success);
-      box-shadow: 0 0 10px var(--success);
-    }
-    
-    .status-inactive {
-      background: var(--error);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Diesel Repair | Professional Truck Repair Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+        
+        .logo-text p {
+            font-size: 14px;
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/27508769/pexels-photo-27508769/free-photo-of-a-blue-semi-truck-driving-down-a-desert-road.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Services */
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+        }
+        
+        /* About */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-content h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 15px;
+        }
+        
+        .features {
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .feature-icon {
+            background-color: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-size: 80px;
+            color: var(--accent);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #bbb;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+                justify-content: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Login Screen -->
-  <div class="login-container" id="loginScreen">
-    <div class="logo">
-      <img src="Images/cologo.png" alt="Fleet Management Logo">
-    </div>
-    <h1>Admin Portal Login</h1>
-    <form id="loginForm">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Enter your username" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" required>
-      </div>
-      <button type="submit">Login</button>
-    </form>
-    <p class="error-message" id="errorMessage">Invalid username or password</p>
-    <div class="footer">
-      <p>Fleet Management System v1.0</p>
-    </div>
-  </div>
-
-  <!-- Dashboard Screen (hidden initially) -->
-  <div class="dashboard-container hidden" id="dashboardScreen">
-    <div class="dashboard-header">
-      <h1>Fleet Management Dashboard</h1>
-      <div class="dashboard-nav">
-        <button onclick="showSection('overview')">Overview</button>
-        <button onclick="showSection('vehicles')">Vehicles</button>
-        <button onclick="showSection('maintenance')">Maintenance</button>
-        <button onclick="showSection('drivers')">Drivers</button>
-        <button onclick="showSection('fleet')">FleetUse</button>
-        <button onclick="logout()">Logout</button>
-      </div>
-    </div>
-    
-    <div class="dashboard-content">
-      <div id="overview" class="section active">
-        <h2>Fleet Overview</h2>
-        <p>Welcome to your fleet management dashboard. Here you can monitor and manage your entire fleet.</p>
-        <div style="margin-top: 2rem; background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 6px; border: 1px solid var(--border);">
-          <h3 style="margin-top: 0; color: var(--text);">System Status</h3>
-          <p><span class="status status-active"></span> All systems operational</p>
-          <p><span class="status status-active"></span> Database connection active</p>
-          <p><span class="status status-active"></span> 24/7 monitoring enabled</p>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/50x50" alt="Prime Diesel Repair Logo">
+                <div class="logo-text">
+                    <h1>Prime Diesel Repair</h1>
+                    <p>Professional Truck Services</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-      
-      <div id="vehicles" class="section">
-        <h2>Vehicle Management</h2>
-        <p>Manage your fleet vehicles, registrations, and specifications. This section will display:</p>
-        <ul>
-          <li>Complete vehicle inventory</li>
-          <li>Registration and inspection status</li>
-          <li>Vehicle utilization metrics</li>
-        </ul>
-      </div>
-      
-      <div id="maintenance" class="section">
-        <h2>Maintenance Scheduling</h2>
-        <p>Track and schedule maintenance for your fleet vehicles. Future features include:</p>
-        <ul>
-          <li>Preventive maintenance schedules</li>
-          <li>Service history tracking</li>
-          <li>Maintenance cost analysis</li>
-        </ul>
-      </div>
-      
-      <div id="drivers" class="section">
-        <h2>Driver Management</h2>
-        <p>Manage driver information, assignments, and certifications. Coming soon:</p>
-        <ul>
-          <li>Driver performance metrics</li>
-          <li>Certification tracking</li>
-          <li>Shift scheduling</li>
-        </ul>
-      </div>
+    </header>
 
-      <div id="fleet" class="section">
-        <h2>Vehicle Management</h2>
-        <p>New Hire</p>
-        <ul>
-          <ul>
-            <li>Ez loads (Must)</li>
-            <li>Formsite Truck and trailer (Must)</li>
-            <li>INFO sheets</li>
-            <li>Fuel card</li>
-            <li>PrePass</li>
-            <li>Tablet (if applicable)</li>
-            <li>Trailer Info sheets (if applicable)</li>
-            <li>Samsra (If applicable)</li>
-            <li>ELD Dev</li>
-            <li>Unit number stickers (if applicable)</li>
-          </ul>
-        </ul>
-        <p>Phone Calls</p>
-        <ul>
-          <ul>
-          <li>Unit info</li>
-          <li>Description with photos</li>
-          <li>Know load info</li>
-          <li>Find cheaper and faster repair shop</li>
-          <li>Ez loads (Must)</li>
-          <li>Formsite Truck and trailer (Must)</li>
-          <li>INFO sheets</li>
-          <li>Fuel card</li>
-          <li>PrePass</li>
-          <li>Tablet (if applicable)</li>
-          <li>Trailer Info sheets (if applicable)</li>
-          <li>Samsra (If applicable)</li>
-          <li>ELD Dev</li>
-          <li>Unit number stickers (if applicable)</li>
-          <li>Ez loads (Must)</li>
-          <li>Formsite Truck and trailer (Must)</li>
-          <li>INFO sheets</li>
-          <li>Fuel card</li>
-          <li>PrePass</li>
-          <li>Tablet (if applicable)</li>
-          <li>Trailer Info sheets (if applicable)</li>
-          <li>Samsra (If applicable)</li>
-          <li>ELD Dev</li>
-          <li>Unit number stickers (if applicable)</li>
-          <li>Unit info</li>
-          <li>Description with photos</li>
-          <li>Know load info</li>
-          <li>Find cheaper and faster repair shop</li>
-          <li>Ez loads (Must)</li>
-          <li>Formsite Truck and trailer (Must)</li>
-          <li>INFO sheets</li>
-          <li>Fuel card</li>
-          <li>PrePass</li>
-          <li>Tablet (if applicable)</li>
-          <li>Trailer Info sheets (if applicable)</li>
-          <li>Samsra (If applicable)</li>
-          <li>ELD Dev</li>
-          <li>Unit number stickers (if applicable)</li>
-          <li>Ez loads (Must)</li>
-          <li>Formsite Truck and trailer (Must)</li>
-          <li>INFO sheets</li>
-          <li>Fuel card</li>
-          <li>PrePass</li>
-          <li>Tablet (if applicable)</li>
-          <li>Trailer Info sheets (if applicable)</li>
-          <li>Samsra (If applicable)</li>
-          <li>ELD Dev</li>
-          <li>Unit number stickers (if applicable)</li>
-        </ul>
-      </ul>
-      </div>
-    </div>
-  </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Expert Diesel Truck Repair</h2>
+                <p>Your trusted partner for all heavy-duty truck and diesel engine repairs. We deliver quality service with over 2 years of experience in the industry.</p>
+                <a href="#contact" class="btn">Schedule Service</a>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Simple authentication (in production, use proper backend authentication)
-    const ADMIN_CREDENTIALS = {
-      username: "admin",
-      password: "fleet123" // Change this to a secure password
-    };
-    
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      const errorMessage = document.getElementById('errorMessage');
-      
-      if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
-        // Successful login
-        document.getElementById('loginScreen').classList.add('hidden');
-        document.getElementById('dashboardScreen').classList.remove('hidden');
-        errorMessage.style.display = 'none';
-      } else {
-        // Failed login
-        errorMessage.style.display = 'block';
-        document.getElementById('password').value = '';
-        document.getElementById('password').focus();
-      }
-    });
-    
-    function showSection(sectionId) {
-      // Hide all sections
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-      });
-      
-      // Show selected section
-      document.getElementById(sectionId).classList.add('active');
-      
-      // Update active button state
-      document.querySelectorAll('.dashboard-nav button').forEach(btn => {
-        btn.style.background = btn.textContent.toLowerCase().includes(sectionId) 
-          ? 'var(--primary)' 
-          : 'var(--secondary)';
-        btn.style.color = btn.textContent.toLowerCase().includes(sectionId) 
-          ? 'white' 
-          : 'var(--text-secondary)';
-      });
-    }
-    
-    function logout() {
-      document.getElementById('dashboardScreen').classList.add('hidden');
-      document.getElementById('loginScreen').classList.remove('hidden');
-      document.getElementById('username').value = '';
-      document.getElementById('password').value = '';
-      document.getElementById('username').focus();
-      
-      // Reset button states
-      document.querySelectorAll('.dashboard-nav button').forEach(btn => {
-        btn.style.background = 'var(--secondary)';
-        btn.style.color = 'var(--text-secondary)';
-      });
-    }
-    
-    // Focus username field on page load
-    window.onload = function() {
-      document.getElementById('username').focus();
-    };
-  </script>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Engine Repair">
+                    </div>
+                    <div class="service-content">
+                        <h3>Engine Repair & Rebuild</h3>
+                        <p>Comprehensive diagnostics and repair for all diesel engines, including complete overhauls and rebuilds.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.pexels.com/photos/3785927/pexels-photo-3785927.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Transmission Service">
+                    </div>
+                    <div class="service-content">
+                        <h3>Transmission Services</h3>
+                        <p>Expert transmission repairs, rebuilds, and maintenance to keep your truck running smoothly.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.pexels.com/photos/5572265/pexels-photo-5572265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Electrical System">
+                    </div>
+                    <div class="service-content">
+                        <h3>Electrical Systems</h3>
+                        <p>Diagnosis and repair of all electrical components and wiring systems in heavy-duty trucks.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.pexels.com/photos/7541360/pexels-photo-7541360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Preventive Maintenance">
+                    </div>
+                    <div class="service-content">
+                        <h3>Preventive Maintenance</h3>
+                        <p>Scheduled maintenance programs to prevent breakdowns and extend the life of your equipment.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.pexels.com/photos/3642618/pexels-photo-3642618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Brake System">
+                    </div>
+                    <div class="service-content">
+                        <h3>Brake Systems</h3>
+                        <p>Complete brake inspections, repairs, and replacements for all heavy-duty vehicles.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.pexels.com/photos/32266091/pexels-photo-32266091/free-photo-of-icelandic-landscape-reflected-in-car-mirror.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="24/7 Roadside Assistance">
+                    </div>
+                    <div class="service-content">
+                        <h3>24/7 Roadside Assistance</h3>
+                        <p>Emergency repair services available anytime, anywhere to get you back on the road quickly.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-content">
+                <h2>Why Choose Prime Diesel Repair?</h2>
+                <p>At Prime Diesel Repair, we understand that your truck is more than just a vehicle - it's your livelihood. That's why we're committed to providing the highest quality repair services with unmatched expertise.</p>
+                <p>Our ASE-certified technicians have decades of combined experience working with all major diesel engine brands and heavy-duty truck models.</p>
+                
+                <div class="features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div>
+                            <h4>Certified Technicians</h4>
+                            <p>Our team holds multiple certifications and undergoes continuous training.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div>
+                            <h4>State-of-the-Art Equipment</h4>
+                            <p>We invest in the latest diagnostic tools and repair technology.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Quick Turnaround</h4>
+                            <p>We minimize downtime with efficient service and quality repairs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-img">
+                <img src="https://images.pexels.com/photos/7564866/pexels-photo-7564866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Our Workshop">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Prime Diesel Repair saved my business when my fleet truck broke down. Their quick response and expert repair got me back on the road faster than I expected. Highly recommended!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John D.">
+                        </div>
+                        <div class="author-info">
+                            <h4>John Dawson</h4>
+                            <p>Dawson Trucking Co.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>I've been taking my trucks to Prime Diesel for years. Their preventive maintenance program has saved me thousands in repair costs and kept my fleet running smoothly.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria S.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Maria Sanchez</h4>
+                            <p>Sanchez Logistics</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Honest, reliable, and skilled - everything you want in a diesel repair shop. They diagnosed an electrical issue that two other shops couldn't find and fixed it at a fair price.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Robert T.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Robert Thompson</h4>
+                            <p>Independent Owner-Operator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Have questions about our services or need to schedule an appointment? Contact us today!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Address</h4>
+                                <p>25858 S Sunset Dr<br> Monee, IL 60449</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>(773)706-7342</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>info@primedieselrepair.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Hours</h4>
+                                <p>Mon-Fri: 8:00 AM - 6:00 PM<br>Sat: 8:00 AM - 2:00 PM<br>Sun: Emergency Only</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone">
+                        <select required>
+                            <option value="">Select Service</option>
+                            <option value="engine">Engine Repair</option>
+                            <option value="transmission">Transmission Service</option>
+                            <option value="electrical">Electrical Systems</option>
+                            <option value="maintenance">Preventive Maintenance</option>
+                            <option value="brakes">Brake Systems</option>
+                            <option value="roadside">Roadside Assistance</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Prime Diesel Repair is a full-service heavy-duty truck and diesel engine repair facility serving the transportation industry since 2001.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Engine Repair</a></li>
+                        <li><a href="#">Transmission Services</a></li>
+                        <li><a href="#">Electrical Systems</a></li>
+                        <li><a href="#">Preventive Maintenance</a></li>
+                        <li><a href="#">Brake Systems</a></li>
+                        <li><a href="#">Roadside Assistance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for maintenance tips and special offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Prime Diesel Repair. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
