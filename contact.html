@@ -437,69 +437,97 @@
         </footer>
     </div>
     
-    <script>
-        // Function to get current CDT time
-        function getCurrentCDTTime() {
-            const options = {
-                timeZone: 'America/Chicago',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: true
-            };
-            return new Date().toLocaleTimeString('en-US', options);
-        }
+  <script>
+    // Function to get current CDT time
+    function getCurrentCDTTime() {
+        const options = {
+            timeZone: 'America/Chicago',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+        };
+        return new Date().toLocaleTimeString('en-US', options);
+    }
+    
+    // Function to get current CDT day (0-6, where 0 is Sunday)
+    function getCurrentCDTDay() {
+        const now = new Date();
+        const cdtOptions = { timeZone: 'America/Chicago' };
+        return now.toLocaleString('en-US', { weekday: 'long', ...cdtOptions });
+    }
+    
+    // Function to check if current time is within working hours
+    function isWithinHours(startHour, endHour) {
+        const now = new Date();
+        const cdtOptions = { timeZone: 'America/Chicago' };
+        const cdtHours = now.toLocaleString('en-US', { hour: 'numeric', hour12: false, ...cdtOptions });
+        const currentHour = parseInt(cdtHours);
         
-        // Function to check if current time is within working hours
-        function isWithinHours(startHour, endHour) {
-            const now = new Date();
-            const cdtOptions = { timeZone: 'America/Chicago' };
-            const cdtHours = now.toLocaleString('en-US', { hour: 'numeric', hour12: false, ...cdtOptions });
-            const currentHour = parseInt(cdtHours);
+        // Handle overnight shifts (like 10 PM to 8 AM)
+        if (startHour > endHour) {
+            return currentHour >= startHour || currentHour < endHour;
+        } else {
+            return currentHour >= startHour && currentHour < endHour;
+        }
+    }
+    
+    // Update all availability badges
+    function updateAvailabilityBadges() {
+        const badges = document.querySelectorAll('.availability-badge');
+        const currentDay = getCurrentCDTDay();
+        
+        badges.forEach(badge => {
+            const hours = badge.getAttribute('data-hours').split('-');
+            const startHour = parseInt(hours[0]);
+            const endHour = parseInt(hours[1]);
             
-            // Handle overnight shifts (like 10 PM to 8 AM)
-            if (startHour > endHour) {
-                return currentHour >= startHour || currentHour < endHour;
-            } else {
-                return currentHour >= startHour && currentHour < endHour;
+            // Get the row this badge belongs to
+            const row = badge.closest('tr');
+            const nameCell = row.querySelector('td:first-child');
+            const name = nameCell.textContent.trim();
+            
+            // Check for specific day restrictions
+            let isDayOff = false;
+            
+            if ((name.includes('Nurali Fleet') || name.includes('Zhanysh Fleet') || name.includes('Janysh Fleet')) && 
+                (currentDay === 'Saturday' || currentDay === 'Sunday')) {
+                isDayOff = true;
+            } else if (name.includes('Elmar Fleet') && currentDay === 'Friday') {
+                isDayOff = true;
+            } else if (name.includes('Bakai Fleet') && currentDay === 'Sunday') {
+                isDayOff = true;
             }
-        }
-        
-        // Update all availability badges
-        function updateAvailabilityBadges() {
-            const badges = document.querySelectorAll('.availability-badge');
             
-            badges.forEach(badge => {
-                const hours = badge.getAttribute('data-hours').split('-');
-                const startHour = parseInt(hours[0]);
-                const endHour = parseInt(hours[1]);
-                
-                if (isWithinHours(startHour, endHour)) {
-                    badge.textContent = 'Available';
-                    badge.className = 'badge badge-success';
-                } else {
-                    badge.textContent = 'Not Available';
-                    badge.className = 'badge badge-danger';
-                }
-            });
-        }
+            if (isDayOff) {
+                badge.textContent = 'Day Off';
+                badge.className = 'badge badge-warning';
+            } else if (isWithinHours(startHour, endHour)) {
+                badge.textContent = 'Available';
+                badge.className = 'badge badge-success';
+            } else {
+                badge.textContent = 'Not Available';
+                badge.className = 'badge badge-danger';
+            }
+        });
+    }
+    
+    // Update time display
+    function updateTimeDisplay() {
+        document.getElementById('current-time').textContent = getCurrentCDTTime() + ' - ' + getCurrentCDTDay();
+    }
+    
+    // Initialize and update every minute
+    document.addEventListener('DOMContentLoaded', function() {
+        updateTimeDisplay();
+        updateAvailabilityBadges();
         
-        // Update time display
-        function updateTimeDisplay() {
-            document.getElementById('current-time').textContent = getCurrentCDTTime();
-        }
-        
-        // Initialize and update every minute
-        document.addEventListener('DOMContentLoaded', function() {
+        // Update every minute
+        setInterval(() => {
             updateTimeDisplay();
             updateAvailabilityBadges();
-            
-            // Update every minute
-            setInterval(() => {
-                updateTimeDisplay();
-                updateAvailabilityBadges();
-            }, 60000);
-        });
-    </script>
+        }, 60000);
+    });
+</script>
 </body>
 </html>
